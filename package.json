@@ -2,9 +2,10 @@
   "name": "wokesharks",
   "version": "1.0.0",
   "description": "analytics and data visualization tool",
-  "main": "app.js",
+  "main": "wokeshark.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm start"
   },
   "repository": {
     "type": "git",

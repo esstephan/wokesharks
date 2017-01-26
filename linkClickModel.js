@@ -12,3 +12,5 @@ var linkClickSchema = new Schema({
 //define a mongoose Model
 module.exports = mongoose.model('LinkClick', linkClickSchema);
 
+
+

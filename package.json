@@ -1,0 +1,28 @@
+{
+  "name": "wokesharks",
+  "version": "1.0.0",
+  "description": "analytics and data visualization tool",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bentljm/wokesharks.git"
+  },
+  "keywords": [
+    "analytics",
+    "visualization"
+  ],
+  "author": "wokesharks",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/bentljm/wokesharks/issues"
+  },
+  "homepage": "https://github.com/bentljm/wokesharks#readme",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "body-parser": "^1.16.0",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.8"
+  }
+}

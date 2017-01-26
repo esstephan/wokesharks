@@ -1,6 +1,6 @@
 //import dependencies
 var mongoose = require('mongoose');
-var bodyParse = require('body-parse');
+var bodyParse = require('body-parser');
 var express = require('express');
 var path = require('path');
 var app = express();
@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'client')));
 port = process.env.PORT || 8080;
 
 //create server and listen to port
-var server = app.list(port);
+var server = app.listen(port);
 console.log('Listening on port ' + port);
 
 //export app and server

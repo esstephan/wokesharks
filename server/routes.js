@@ -1,7 +1,7 @@
 //import app and schema files
 var app = require('server.js');
-var LinkClick = require('linkClickModel.js')
-var PageView = require('pageViewModel.js')
+var LinkClick = require('./linkClickModel.js')
+var PageView = require('./pageViewModel.js')
 
 //enable CORS
 app.use(function(req, res, next) {

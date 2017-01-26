@@ -1,4 +1,5 @@
 # Files that might appear on external disk
+.DS_Store
 .Spotlight-V100
 .Trashes
 node_modules/

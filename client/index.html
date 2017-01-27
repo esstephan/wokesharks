@@ -4,18 +4,23 @@
     <meta charset = 'utf'>
     <title>Wokeshark Analytics</title>
     <link rel='stylesheet' type='text/css' href="styles/style.css">
+    <!--Importing bootstrap for page layout-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src = "wokeshark.js"></script>
   </head>
-  <body>
+
+<body>
 
 <!--Bootstrap container wrapper-->
 <div class="container-fluid">
+
+<!--Site header-->
   <div class="top-banner" height=30px>
     <h1><img src='./images/tiger_shark_and_turtle.jpg' height=150px>The sharkiest analytics on the internet!</h1>
   </div>
 
+<!--Navigation bar - static -->
 <div class="row header">
 
 <div class='col-md-2'><h4>WOKESHARK</h4></div>
@@ -30,25 +35,27 @@
 
 <div class="row">
 
-<!--Left side overview -->
+<!--Left side overview
+Displays summary information for page regardless of which
+visualization is selected-->
   <div class="col-md-4">
   <h2>{{pagename}}
 
   <h2>Pageviews for your site since {{time}}{{date}}:</h2>
-  <div ng-view class="pageviews">Pageviews</div>
+  <div class="pageviews">Pageviews</div>
 
   <h2>Clicks on your site since {{time}}{{date}}:</h2>
-    <div ng-view class="linkclicks">Number of link clicks</div>
+    <div class="linkclicks">Number of link clicks</div>
   </div>
 
 <!--Center featured chart -->
-  <div class="col-md-4">
+  <div ng-view class="col-md-4">
 <h1>visualization goes here</h1>
   </div>
 
 
 <!--Right side featured stats -->
-  <div class="col-md-4">
+  <div ng-view class="col-md-4">
     <h1>featured stats go here</h1>
   </div>
 
@@ -56,9 +63,8 @@
 </div>
 
 
-  </body>
+</body>
 
-</div>
 
 
 

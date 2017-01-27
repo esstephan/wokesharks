@@ -1,5 +1,4 @@
 //import dependencies
-var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var routes = require('./routes.js')
 var express = require('express');

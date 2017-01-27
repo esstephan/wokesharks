@@ -5,6 +5,7 @@ mongoose.Promise = require('bluebird');
 
 //connect to mongo database via heroku
 mongoose.connect('mongodb://heroku_7xvkrhc2:da0n3g7rpv2r755g9e9fe535de@ds133279.mlab.com:33279/heroku_7xvkrhc2');
+//mongoose.connect('mongodb://localhost:8080/data/db');
 
 //open a mongoose connection
 var db = mongoose.connection;

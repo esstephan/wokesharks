@@ -1,5 +1,6 @@
-angular.module("pageViewController", [])
-.controller("pageView", ["$scope", "$http", function($scope, $http) {
+angular.module("wokeshark.pageView", [])
+
+.controller("pageViewController", ["$scope", "$http", function($scope, $http) {
 
 	// $scope.newPage = function(newData) {
 	// 	$http.post('/pageView', newData).then(function (data) {
@@ -13,4 +14,5 @@ angular.module("pageViewController", [])
 			$scope.views=data.count;
 		})
 	}
+	$scope.getPageViewData();
 }])

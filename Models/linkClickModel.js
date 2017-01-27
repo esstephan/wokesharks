@@ -6,7 +6,8 @@ var Schema = mongoose.Schema;
 //create new linkClick schema
 var linkClickSchema = new Schema({
   url: String,
-  count: Number
+  count: Number,
+  date: Array
 });
 
 //define a mongoose Model

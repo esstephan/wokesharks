@@ -14,7 +14,7 @@ module.exports = function(app, express) {
     //check to see if url exists in the Link schema table
     LinkClick.findOne({url: url})
       .then(function(link) {
-        //if it doesn't exist, throw an error. Else return count
+        //if it doesn't exist throw an error, else return count
         if(!link) {
           console.log("url does not exist")
         } else {
@@ -27,6 +27,7 @@ module.exports = function(app, express) {
   app.post('/linkClick', function(req, res) {
     //set url to url passed into request body
     var url = req.body.url;
+
     //check to see if the url exists in the Link schema table
     LinkClick.findOne({url: url})
       .then(function(link) {
@@ -56,14 +57,48 @@ module.exports = function(app, express) {
   /* pageView route */
   //GET request
   app.get('/pageView', function(req, res) {
-    //do stuff
-    res.send("HEY IAN");
+    var title = req.body.title;
+    //check to see if url exists in the Link schema table
+    PageView.findOne({title: title})
+      .then(function(page) {
+        //if it doesn't exist throw an error, else return count
+        if(!page) {
+          console.log("url does not exist")
+        } else {
+          res.send(page.count)
+        }
+      });
   });
 
   //POST request
   app.post('/pageView', function(req, res) {
-    //do stuff here
-    res.send("HEY IAN");
+    //set url to url passed into request body
+    var title = req.body.title;
+
+    //check to see if the url exists in the Link schema table
+    PageView.findOne({title: title})
+      .then(function(page) {
+        //if it exists, update count
+        if(page) {
+          page.count = page.count++;
+          //save updates
+          page.save(function(err) {
+            if(err) throw err;
+            else console.log('page count updated')
+          });
+        //create new link and set count to 1
+        } else {
+          var newPage = new PageView({
+            title: title,
+            count: 1
+          });
+          //save new link
+          newPage.save(function(err) {
+          if(err) throw err;
+          else console.log('new page saved')
+          });
+        }
+      })
   });
 
 };

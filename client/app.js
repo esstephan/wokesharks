@@ -1,4 +1,6 @@
-angular.module('wokeshark', ['ngRoute']);
+angular.module('wokeshark',
+  ['wokeshark.pageView',
+  'ngRoute'])
 
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
@@ -11,5 +13,6 @@ angular.module('wokeshark', ['ngRoute']);
       controller: 'linkClickController'
     })
     .otherwise({
-      redirectTo: '/index.html'
-    });
+      redirectTo: '/'
+    })
+  });

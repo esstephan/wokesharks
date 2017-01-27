@@ -14,5 +14,5 @@ angular.module("wokeshark.pageView", [])
 			$scope.views=data.count;
 		})
 	}
-	$scope.getPageViewData();
+	$scope.getPageViewData(page);
 }])

@@ -10,7 +10,7 @@ mongoose.connect('mongodb://heroku_7xvkrhc2:da0n3g7rpv2r755g9e9fe535de@ds133279.
 var db = mongoose.connection;
 
 //handle errors on connection
-db.on('error', cosole.error.bind(console, 'connection error'));
+db.on('error', console.error.bind(console, 'connection error'));
 
 //handle successful connection
 db.once('open', function() {

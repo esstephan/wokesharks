@@ -1,5 +1,4 @@
 //import app and schema files
-var app = require('server.js');
 var LinkClick = require('./Models/linkClickModel.js');
 var PageView = require('./Models/pageViewModel.js');
 

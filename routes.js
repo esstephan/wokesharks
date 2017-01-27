@@ -18,7 +18,7 @@ module.exports = function(app, express) {
         if(!link) {
           console.log("url does not exist")
         } else {
-          res.send(link.count)
+          res.json(link)
         }
       });
   });
@@ -65,7 +65,7 @@ module.exports = function(app, express) {
         if(!page) {
           console.log("url does not exist")
         } else {
-          res.send(page.count)
+          res.json(page)
         }
       });
   });

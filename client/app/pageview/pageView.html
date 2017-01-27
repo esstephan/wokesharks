@@ -1,2 +1,32 @@
 <div id="pageview-container" ng-controller='pageViewController'>
+
+<div class = "row" ng-model="pageviews">
+
+<!--Left side overview
+Displays identical summary information for page regardless of which
+visualization is selected-->
+  <div class="col-md-4">
+  <h2>{{pagename}}
+
+  <h2>Pageviews for your site:</h2>
+  <h1>Now pageviews is loaded</h1>
+  <div class="pageviews">{{views}}</div>
+
+  <h2>Clicks on your site:</h2>
+    <div class="linkclicks">{{clicks}}</div>
+  </div>
+
+<!--Center featured chart -->
+  <div class="col-md-4">
+<h1>visualization goes here</h1>
+  </div>
+
+
+<!--Right side featured stats -->
+  <div class="col-md-4">
+    <h1>featured stats go here</h1>
+  </div>
+
+</div>
+
 </div>

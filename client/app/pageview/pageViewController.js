@@ -1,16 +1,16 @@
 angular.module("pageViewController", [])
 .controller("pageView", ["$scope", "$http", function($scope, $http) {
 
-	$scope.newPage = function(newData) {
-		$http.post('/pageView', newData).then(function (data) {
-			$scope.title = data.title
-			$scope.count = data.count;
-		})
-	}
+	// $scope.newPage = function(newData) {
+	// 	$http.post('/pageView', newData).then(function (data) {
+	// 		$scope.title = data.title
+	// 		$scope.count = data.count;
+	// 	})
+	// }
 
-	$scope.getNumberOfViews = function(id) {
-		$http.get('/pageView' + id).then(function (data) {
-			return data.count;
+	$scope.getPageViewData = function(page) {
+		$http.get('/api/pages/:page.id').then(function (data) {
+			$scope.views=data.count;
 		})
 	}
 }])

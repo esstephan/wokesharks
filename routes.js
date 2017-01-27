@@ -10,6 +10,7 @@ app.get('/linkClick', function(req, res) {
   //do stuff
 
   console.log("REQ BODY", req.body)
+  res.send("HEY IAN")
 })
 
 //POST request
@@ -17,6 +18,7 @@ app.post('/linkClick', function(req, res) {
   //do stuff here
 
   console.log("REQ BODY", req.body)
+  res.send("HEY IAN");
 })
 
 /* pageView route */
@@ -24,11 +26,16 @@ app.post('/linkClick', function(req, res) {
 //GET request
 app.get('/pageView', function(req, res) {
   //do stuff
+  console.log("REQ BODY", req.body)
+  res.send("HEY IAN");
 })
 
 //POST request
 app.post('/pageView', function(req, res) {
   //do stuff here
+  console.log("REQ BODY", req.body)
+  res.send("HEY IAN");
+
 })
 
 

@@ -4,9 +4,62 @@
     <meta charset = 'utf'>
     <title>Wokeshark Analytics</title>
     <link rel='stylesheet' type='text/css' href="styles/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src = "wokeshark.js"></script>
   </head>
   <body>
-  <h1>Welcome to the sharkiest analytics tool on the internet!</h1>
+
+<!--Bootstrap container wrapper-->
+<div class="container-fluid">
+  <div class="top-banner" height=30px>
+    <h1><img src='./images/tiger_shark_and_turtle.jpg' height=150px>The sharkiest analytics on the internet!</h1>
+  </div>
+
+<div class="row header">
+
+<div class='col-md-2'><h4>WOKESHARK</h4></div>
+<div class='col-md-1'><h4>|</h4></div>
+<div class='col-md-2'><h4>Overall</h4></div>
+<div class='col-md-1'><h4>|</h4></div>
+<div class='col-md-2'><h4>Pageview report</h4></div>
+<div class='col-md-1'><h4>|</h4></div>
+<div class='col-md-2'><h4>Link clicks report</h4></div>
+
+</div>
+
+<div class="row">
+
+<!--Left side overview -->
+  <div class="col-md-4">
+  <h2>{{pagename}}
+
+  <h2>Pageviews for your site since {{time}}{{date}}:</h2>
+  <div ng-view class="pageviews">Pageviews</div>
+
+  <h2>Clicks on your site since {{time}}{{date}}:</h2>
+    <div ng-view class="linkclicks">Number of link clicks</div>
+  </div>
+
+<!--Center featured chart -->
+  <div class="col-md-4">
+<h1>visualization goes here</h1>
+  </div>
+
+
+<!--Right side featured stats -->
+  <div class="col-md-4">
+    <h1>featured stats go here</h1>
+  </div>
+
+
+</div>
+
+
   </body>
+
+</div>
+
+
+
+

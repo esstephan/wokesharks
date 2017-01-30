@@ -12,8 +12,10 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
 
+    <script src= "routes.js"></script>
     <script src = "app.js"></script>
     <script src = "/app/pageview/pageViewController.js"></script>
+    <script src = "/app/linkclicks/linkClickController.js"></script>
   </head>
 
 <body>
@@ -33,9 +35,9 @@
 <div class='col-md-1'><h4>|</h4></div>
 <div class='col-md-2'><h4>Overall</h4></div>
 <div class='col-md-1'><h4>|</h4></div>
-<div class='col-md-2'><h4><a href='#pageView'>Pageview report</a></h4></div>
+<div class='col-md-2'><h4><a href='#/pageView' routerLinkActive="active">Pageview report</a></h4></div>
 <div class='col-md-1'><h4>|</h4></div>
-<div class='col-md-2'><h4><a href='#linkClickView'>Link clicks report</h4></div>
+<div class='col-md-2'><h4><a href='#/linkClick'>Link clicks report</h4></div>
 
 </div>
 
@@ -54,7 +56,7 @@ visualization is selected-->
     <div class="linkclicks">Number of link clicks</div>
   </div>
 
-<!--Center featured chart -->
+Center featured chart -->
 <!--   <div class="col-md-4">
 <h1>visualization goes here</h1>
   </div>

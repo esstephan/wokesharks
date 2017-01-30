@@ -9,11 +9,11 @@ angular.module('wokeshark',
       templateUrl: 'app/pageview/pageView.html',
       controller: 'pageViewController'
     })
-    .when('/linkClickView', {
+    .when('/linkClick', {
       templateUrl: 'app/linkclicks/linkClick.html',
       controller: 'linkClickController'
     })
     .otherwise({
       redirectTo: '/'
     })
-  });
+  })

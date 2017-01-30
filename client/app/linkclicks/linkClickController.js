@@ -1,5 +1,5 @@
 angular.module("wokeshark.linkClick", [])
-.controller("linkClickController", ["$scope", "$http", function($scope, $http) {
+.controller("linkClickController", function($scope, $http) {
   $scope.getLinks = function(page) {
     $http.get('/linkClick')
     .then(function (data) {
@@ -16,6 +16,5 @@ angular.module("wokeshark.linkClick", [])
     .then(function (data) {
       console.log("link sent")
     })
-  }
-  $scope.getLinks("hello");
-}])
+  })
+  //$scope.getLinks("hello");

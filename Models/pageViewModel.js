@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 //create new pageView schema
 var pageViewSchema = new Schema({
   title: String,
-  count: Number
+  count: Number,
   date: Array
 });
 

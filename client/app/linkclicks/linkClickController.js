@@ -9,12 +9,13 @@ angular.module("wokeshark.linkClick", [])
   $scope.sendLink = function(link){
     console.log(link);
     var newLink =
-    {url: link.url}
-    date: Date.now()
-  }
-    http.send('/linkClick', link)
+    {url: link.url
+    date: Date.now()}
+  
+    $http.send('/linkClick', link)
     .then(function (data) {
       console.log("link sent")
     })
-  })
+  }
+})
   //$scope.getLinks("hello");

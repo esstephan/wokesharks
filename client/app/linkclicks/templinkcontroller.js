@@ -9,7 +9,6 @@ angular.module("wokeshark.linkClick", [])
       console.log("count of link clicks retrieved from server for ", url, " is ", $scope[url].count);
       $scope[url].url = data.url;
       $scope[url].dates = data.date;
-      //test
     })
   };
 
@@ -33,4 +32,3 @@ angular.module("wokeshark.linkClick", [])
   $scope.getLink(/checkout);
 
   });
-

@@ -7,8 +7,8 @@ module.exports = function(app, express) {
   /* linkClick route */
   //GET request
   app.get('/linkClick', function(req, res) {
-    console.log(req)
-    var url = req.body.url;
+    console.log(req.query.url)
+    var url = req.query.url;
     //find url in database
     model.linkClickModel.findOne({url: url}, function(err, link) {
       console.log(link);

@@ -9,7 +9,7 @@ module.exports = function(app, express) {
   app.get('/linkClick', function(req, res) {
     var url = req.body.url;
     //find url in database
-    model.linkClickModel.find({}, function(err, links) {
+    model.linkClickModel.findOnce({"url": url}, function(err, links) {
       if(err) {
         throw err;
       } else {

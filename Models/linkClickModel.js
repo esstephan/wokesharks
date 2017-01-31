@@ -1,17 +1,16 @@
-// //import mongoose and Schema
-// var mongoose = require('mongoose');
-// var Schema = mongoose.Schema;
+//import mongoose and Schema
+var mongoose = require('mongoose');
 
-// /* LinkClick Schema */
-// //create new linkClick schema
-// var linkClickSchema = new Schema({
-//   url: String,
-//   count: Number,
-//   date: Array
-// });
+/* LinkClick Schema */
+//create new linkClick schema
+var linkClickSchema = mongoose.Schema({
+  url: String,
+  count: Number,
+  date: Array
+});
 
-// //define a mongoose Model
-// module.exports = mongoose.model('LinkClick', linkClickSchema);
+//define a mongoose Model
+module.exports = mongoose.model('LinkClick', linkClickSchema);
 
 
 

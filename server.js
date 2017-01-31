@@ -1,7 +1,7 @@
 //import dependencies
 var bodyParser = require('body-parser');
 var express = require('express');
-var model = require('./schema.js');
+var routes = require('./routes.js');
 var path = require('path');
 var app = express();
 var fs = require('fs');
@@ -21,36 +21,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'client')));
 
 //connect routes
-app.get('/linkClick', function(req, res) {
-  var url = req.body.url;
-  model.linkClickModel.findOne({url: url}, function(err, products) {
-    res.send(products);
-  });
-});
-
-app.get('/pageView', function(req, res) {
-  var title = req.body.title;
-  model.pageViewModel.findOne({title: title}, function(err, products) {
-    res.send(products);
-  });
-});
-
-app.post('/linkClick', function(req, res) {
-  model.linkClickModel.create({
-    url: req.body.url,
-  }, function(err, products) {
-    res.send(products);
-  });
-});
-
-app.post('/pageView', function(req, res) {
-  model.pageViewModel.create({
-    title: req.body.title,
-    count: 1
-  }, function(err, products) {
-    res.send(products);
-  });
-});
+routes(app, express);
 
 //set port to whatever port heroku picks, default to 8080
 port = process.env.PORT || 8080;

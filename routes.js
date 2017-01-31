@@ -1,117 +1,104 @@
-// //import app and schema files
-// var LinkClick = require('./Models/linkClickModel.js');
-// var PageView = require('./Models/pageViewModel.js');
-// var mongoose = require('mongoose');
-// mongoose.Promise = require('bluebird');
+//require schemas from Models folder
+var model = require('./schema.js')
 
-// module.exports = function(app, express) {
+//export routes to app file
+module.exports = function(app, express) {
 
-//   /* linkClick route */
-//   //GET request
-//   app.get('/linkClick', function(req, res) {
-//     //set url to url passed into request body
-//     var url = req.body.url;
-//     //check to see if url exists in the Link schema table
-//     LinkClick.findOne({url: url})
-//       .then(function(link) {
-//         //if it doesn't exist throw an error, else return count
-//         if(!link) {
-//           console.log("url does not exist")
-//         } else {
-//           res.json(link)
-//         }
-//       });
-//   });
+  /* linkClick route */
+  //GET request
+  app.get('/linkClick', function(req, res) {
+    //pull url from query
+    var url = req.query.url;
+    //find url in database
+    model.linkClickModel.findOne({url: url}, function(err, link) {
+      console.log(link);
+      if(err) {
+        throw err;
+      } else {
+        res.status(200).send(link);
+      }
+    });
+  });
 
-//   //POST request
-//   app.post('/linkClick', function(req, res) {
-//     //set url to url passed into request body
-//     var url = req.body.url;
-//     console.log(url)
-//     //create new timestamp
-//     var date = Date();
-//     //check to see if the url exists in the Link schema table
-//     // LinkClick.findOne({url: url})
-//     //   .then(function(link) {
+  //POST request
+  app.post('/linkClick', function(req, res) {
+    //pull url from request body
+    var url = req.body.url;
+    //create new timestamp
+    var date = Date();
+    //check if url exists in database
+    model.linkClickModel.findOne({url: url}, function(err, link) {
+      //if it exists, update count and add timestamp
+      if(link) {
+        link.count++;
+        link.date.push(date);
+        link.save();
+        res.status(200).send("Successfully updated link count")
+      //if not, create new record, set count to 1 and add timestamp
+      } else {
+        model.linkClickModel.create({
+          url: url,
+          count: 1,
+          date: [date]
+        }, function(err) {
+          if(err) {
+            throw err;
+          } else {
+            res.status(200).send("Successfully created new link record");
+          }
+        });
+      }
+    });
+  });
 
-//     //     //if it exists, update count
-//     //     if(link) {
-//     //       //add timestamp
-//     //       link.date.push(date);
-//     //       //update count
-//     //       link.count = link.count++;
-//     //       //save updates
-//     //       link.save(function(err) {
-//     //         if(err) throw err;
-//     //         else console.log('link count updated')
-//     //       });
-//     //     //create new link and set count to 1
-//     //     } else {
-//           var newLink = new LinkClick({
-//             url: url,
-//             count: 1,
-//             date: [date]
-//           });
-//           newLink.save();
-//           //save new link
-//           // newLink.save(function(err) {
-//           // if(err) throw err;
-//           // else console.log('new link saved')
-//           // });
-//       //   }
-//       // })
-//   });
+  /* pageView route */
+  //GET request
+  app.get('/pageView', function(req, res) {
+    //pull title from query
+    var title = req.query.title;
+    //find title in database
+    model.pageViewModel.findOne({title: title}, function(err, page) {
+        if(err) {
+        throw err;
+      } else {
+        res.status(200).send(page);
+      }
+    });
+  });
 
-//   /* pageView route */
-//   //GET request
-//   app.get('/pageView', function(req, res) {
-//     var title = req.body.title;
-//     //check to see if url exists in the Link schema table
-//     PageView.findOne({title: title})
-//       .then(function(page) {
-//         //if it doesn't exist throw an error, else return count
-//         if(!page) {
-//           console.log("url does not exist")
-//         } else {
-//           res.json(page)
-//         }
-//       });
-//   });
+  //POST request
+  app.post('/pageView', function(req, res) {
+    //pull title from request body
+    var title = req.body.title;
+    //create new timestamp
+    var date = Date();
+    //check if title exists in database
+    model.pageViewModel.findOne({title: title}, function(err, page) {
+      //if it exists, update count and add timestamp
+      if(page) {
+        page.count++;
+        page.date.push(date);
+        page.save();
+        res.status(200).send("Successfully updated page count")
+      //if not, create new record, set count to 1 and add timestamp
+      } else {
+        model.pageViewModel.create({
+          title: title,
+          count: 1,
+          date: [date]
+        }, function(err) {
+          if(err) {
+            throw err;
+          } else {
+            res.status(200).send("Successfully created new page record");
+          }
+        });
+      }
+    });
+  });
 
-//   //POST request
-//   app.post('/pageView', function(req, res) {
-//     //set url to url passed into request body
-//     var title = req.body.title;
-//     //create new timestamp
-//     var date = Date();
-//     //check to see if the url exists in the Link schema table
-//     PageView.findOne({title: title})
-//       .then(function(page) {
-//         //if it exists, update count
-//         if(page) {
-//           //add timestamp
-//           page.date.push(date);
-//           //update count
-//           page.count = page.count++;
-//           //save updates
-//           page.save(function(err) {
-//             if(err) throw err;
-//             else console.log('page count updated')
-//           });
-//         //create new link and set count to 1
-//         } else {
-//           var newPage = new PageView({
-//             title: title,
-//             count: 1,
-//             date: [date]
-//           });
-//           //save new link
-//           newPage.save(function(err) {
-//           if(err) throw err;
-//           else console.log('new page saved')
-//           });
-//         }
-//       })
-//   });
+};
 
-// };
+
+
+

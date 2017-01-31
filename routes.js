@@ -9,11 +9,11 @@ module.exports = function(app, express) {
   app.get('/linkClick', function(req, res) {
     var url = req.body.url;
     //find url in database
-    model.linkClickModel.findOne({url: url}, function(err, link) {
+    model.linkClickModel.find({}, function(err, links) {
       if(err) {
         throw err;
       } else {
-        res.status(200).send(link);
+        res.status(200).send(links);
       }
     });
   });
@@ -54,11 +54,11 @@ module.exports = function(app, express) {
   app.get('/pageView', function(req, res) {
     var title = req.body.title;
     //find title in database
-    model.pageViewModel.findOne({title: title}, function(err, page) {
+    model.pageViewModel.find({}, function(err, pages) {
         if(err) {
         throw err;
       } else {
-        res.status(200).send(page);
+        res.status(200).send(pages);
       }
     });
   });

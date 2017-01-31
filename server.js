@@ -44,12 +44,14 @@ app.post('/linkClick', function(req, res) {
       link.count++;
       link.date.push(date);
       link.save();
+      res.status(200).send("Link successfully saved")
     } else {
       model.linkClickModel.create({
         url: req.body.url,
         count: 1,
         date: [date]
       }, function(err, link) {
+        res.send(link)
       });
     }
   });

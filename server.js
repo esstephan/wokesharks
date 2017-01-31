@@ -73,7 +73,7 @@ app.post('/pageView', function(req, res) {
       page.save();
       res.status(200).send("Successfully updated page count")
     } else {
-      model.pageClickModel.create({
+      model.pageViewModel.create({
         title: req.body.title,
         count: 1,
         date: [date]

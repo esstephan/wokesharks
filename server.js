@@ -40,16 +40,20 @@ app.post('/linkClick', function(req, res) {
   var date = Date();
 
   model.linkClickModel.findOne({url: url}, function(err, link) {
-    console.log(link)
-     res.send(link);
-
+    if(link) {
+      link.count++;
+      link.date.push(date);
+      link.save();
+    } else {
+      model.linkClickModel.create({
+        url: req.body.url,
+        count: 1,
+        date: [date]
+      }, function(err, link) {
+      });
+    }
   });
-  // model.linkClickModel.create({
-  //   url: req.body.url,
-  //   count: 1,
-  //   date: [date]
-  // }, function(err, link) {
-  // });
+
 });
 
 app.post('/pageView', function(req, res) {

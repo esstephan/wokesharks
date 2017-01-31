@@ -50,11 +50,11 @@ app.post('/linkClick', function(req, res) {
         url: req.body.url,
         count: 1,
         date: [date]
-      }, function(err, link) {
+      }, function(err) {
         if(err) {
           throw err;
         } else {
-          res.status(200).send("Successfully created new link record", link);
+          res.status(200).send("Successfully created new link record");
         }
       });
     }
@@ -77,11 +77,11 @@ app.post('/pageView', function(req, res) {
         title: req.body.title,
         count: 1,
         date: [date]
-      }, function(err, page) {
+      }, function(err) {
         if(err) {
           throw err;
         } else {
-          res.status(200).send("Successfully created new page record", page);
+          res.status(200).send("Successfully created new page record");
         }
       });
     }

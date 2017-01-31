@@ -1,6 +1,5 @@
-//require schemas from Models folder
-var linkClickModel = require('./Models/linkClickModel.js');
-var pageViewModel = require('./Models/pageViewModel.js');
+//require schemas from schema.js
+var model = require('./schema.js');
 
 //export routes to app file
 module.exports = function(app, express) {
@@ -11,7 +10,7 @@ module.exports = function(app, express) {
     //pull url from query
     var url = req.query.url;
     //find url in database
-    linkClickModel.findOne({url: url}, function(err, link) {
+    model.linkClickModel.findOne({url: url}, function(err, link) {
       console.log(link);
       if(err) {
         throw err;
@@ -28,7 +27,7 @@ module.exports = function(app, express) {
     //create new timestamp
     var date = Date();
     //check if url exists in database
-    linkClickModel.findOne({url: url}, function(err, link) {
+    model.linkClickModel.findOne({url: url}, function(err, link) {
       //if it exists, update count and add timestamp
       if(link) {
         link.count++;
@@ -37,7 +36,7 @@ module.exports = function(app, express) {
         res.status(200).send("Successfully updated link count")
       //if not, create new record, set count to 1 and add timestamp
       } else {
-        linkClickModel.create({
+        model.linkClickModel.create({
           url: url,
           count: 1,
           date: [date]
@@ -58,7 +57,7 @@ module.exports = function(app, express) {
     //pull title from query
     var title = req.query.title;
     //find title in database
-    pageViewModel.findOne({title: title}, function(err, page) {
+    model.pageViewModel.findOne({title: title}, function(err, page) {
         if(err) {
         throw err;
       } else {
@@ -74,7 +73,7 @@ module.exports = function(app, express) {
     //create new timestamp
     var date = Date();
     //check if title exists in database
-    pageViewModel.findOne({title: title}, function(err, page) {
+    model.pageViewModel.findOne({title: title}, function(err, page) {
       //if it exists, update count and add timestamp
       if(page) {
         page.count++;
@@ -83,7 +82,7 @@ module.exports = function(app, express) {
         res.status(200).send("Successfully updated page count")
       //if not, create new record, set count to 1 and add timestamp
       } else {
-        pageViewModel.create({
+        model.pageViewModel.create({
           title: title,
           count: 1,
           date: [date]

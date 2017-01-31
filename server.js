@@ -38,6 +38,7 @@ app.get('/pageView', function(req, res) {
 app.post('/linkClick', function(req, res) {
   model.linkClickModel.create({
     url: req.body.url,
+    count: 1
   }, function(err, products) {
     res.send(products);
   });

@@ -7,7 +7,7 @@ module.exports = function(app, express) {
   /* linkClick route */
   //GET request
   app.get('/linkClick', function(req, res) {
-    console.log(req.query.url)
+    //pull url from query
     var url = req.query.url;
     //find url in database
     model.linkClickModel.findOne({url: url}, function(err, link) {
@@ -54,13 +54,14 @@ module.exports = function(app, express) {
   /* pageView route */
   //GET request
   app.get('/pageView', function(req, res) {
-    var title = req.body.title;
+    //pull title from query
+    var title = req.query.title;
     //find title in database
-    model.pageViewModel.find({}, function(err, pages) {
+    model.pageViewModel.findOne({title: title}, function(err, page) {
         if(err) {
         throw err;
       } else {
-        res.status(200).send(pages);
+        res.status(200).send(page);
       }
     });
   });

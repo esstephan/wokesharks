@@ -38,7 +38,6 @@ app.get('/pageView', function(req, res) {
 app.post('/linkClick', function(req, res) {
   var url = req.body.url;
   var date = Date();
-  console.log(url)
 
   model.linkClickModel.findOne({url: url}, function(err, link) {
     if(link) {
@@ -52,7 +51,11 @@ app.post('/linkClick', function(req, res) {
         count: 1,
         date: [date]
       }, function(err, link) {
-        res.status(200).send("Successfully created new link")
+        if(err) {
+          throw err;
+        } else {
+          res.status(200).send("Successfully created new link record", link);
+        }
       });
     }
   });
@@ -60,14 +63,30 @@ app.post('/linkClick', function(req, res) {
 });
 
 app.post('/pageView', function(req, res) {
+  var title = req.body.title;
   var date = Date();
-  model.pageViewModel.create({
-    title: req.body.title,
-    count: 1,
-    date: [date]
-  }, function(err, products) {
-    res.send(products);
+
+  model.pageViewModel.findOne({title: title}, function(err, page) {
+    if(page) {
+      page.count++;
+      page.date.push(date);
+      page.save();
+      res.status(200).send("Successfully updated page count")
+    } else {
+      model.pageClickModel.create({
+        title: req.body.title,
+        count: 1,
+        date: [date]
+      }, function(err, page) {
+        if(err) {
+          throw err;
+        } else {
+          res.status(200).send("Successfully created new page record", page);
+        }
+      });
+    }
   });
+
 });
 
 //set port to whatever port heroku picks, default to 8080

@@ -1,7 +1,7 @@
 //import dependencies
 var bodyParser = require('body-parser');
 var express = require('express');
-var model = require('./schema.js');
+var routes = require('routes');
 var path = require('path');
 var app = express();
 var fs = require('fs');
@@ -21,73 +21,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'client')));
 
 //connect routes
-app.get('/linkClick', function(req, res) {
-  var url = req.body.url;
-  model.linkClickModel.findOne({url: url}, function(err, link) {
-    res.status(200).send(link);
-  });
-});
-
-app.get('/pageView', function(req, res) {
-  var title = req.body.title;
-  model.pageViewModel.findOne({title: title}, function(err, page) {
-    res.status(200).send(page);
-  });
-});
-
-app.post('/linkClick', function(req, res) {
-  var url = req.body.url;
-  var date = Date();
-
-  model.linkClickModel.findOne({url: url}, function(err, link) {
-    if(link) {
-      link.count++;
-      link.date.push(date);
-      link.save();
-      res.status(200).send("Successfully updated link count")
-    } else {
-      model.linkClickModel.create({
-        url: url,
-        count: 1,
-        date: [date]
-      }, function(err) {
-        if(err) {
-          throw err;
-        } else {
-          res.status(200).send("Successfully created new link record");
-        }
-      });
-    }
-  });
-
-});
-
-app.post('/pageView', function(req, res) {
-  var title = req.body.title;
-  var date = Date();
-
-  model.pageViewModel.findOne({title: title}, function(err, page) {
-    if(page) {
-      page.count++;
-      page.date.push(date);
-      page.save();
-      res.status(200).send("Successfully updated page count")
-    } else {
-      model.pageViewModel.create({
-        title: title,
-        count: 1,
-        date: [date]
-      }, function(err) {
-        if(err) {
-          throw err;
-        } else {
-          res.status(200).send("Successfully created new page record");
-        }
-      });
-    }
-  });
-
-});
+routes(app, express);
 
 //set port to whatever port heroku picks, default to 8080
 port = process.env.PORT || 8080;

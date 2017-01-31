@@ -10,6 +10,7 @@ module.exports = function(app, express) {
     var url = req.body.url;
     //find url in database
     model.linkClickModel.findOne({url: url}, function(err, link) {
+      console.log(link);
       if(err) {
         throw err;
       } else {

@@ -47,7 +47,7 @@ app.post('/linkClick', function(req, res) {
       res.status(200).send("Successfully updated link count")
     } else {
       model.linkClickModel.create({
-        url: req.body.url,
+        url: url,
         count: 1,
         date: [date]
       }, function(err) {
@@ -74,7 +74,7 @@ app.post('/pageView', function(req, res) {
       res.status(200).send("Successfully updated page count")
     } else {
       model.pageViewModel.create({
-        title: req.body.title,
+        title: title,
         count: 1,
         date: [date]
       }, function(err) {

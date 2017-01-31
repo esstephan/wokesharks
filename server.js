@@ -1,7 +1,7 @@
 //import dependencies
 var bodyParser = require('body-parser');
 var express = require('express');
-var routes = require('routes');
+var routes = require('routes.js');
 var path = require('path');
 var app = express();
 var fs = require('fs');

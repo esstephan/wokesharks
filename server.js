@@ -38,20 +38,21 @@ app.get('/pageView', function(req, res) {
 app.post('/linkClick', function(req, res) {
   var url = req.body.url;
   var date = Date();
+  console.log(url)
 
   model.linkClickModel.findOne({url: url}, function(err, link) {
     if(link) {
       link.count++;
       link.date.push(date);
       link.save();
-      res.status(200).send("Link successfully saved")
+      res.status(200).send("Successfully updated link count")
     } else {
       model.linkClickModel.create({
         url: req.body.url,
         count: 1,
         date: [date]
       }, function(err, link) {
-        res.send(link)
+        res.status(200).send("Successfully created new link")
       });
     }
   });

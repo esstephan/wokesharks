@@ -24,14 +24,14 @@ app.use(express.static(path.join(__dirname, 'client')));
 app.get('/linkClick', function(req, res) {
   var url = req.body.url;
   model.linkClickModel.findOne({url: url}, function(err, link) {
-    res.send(link);
+    res.status(200).send(link);
   });
 });
 
 app.get('/pageView', function(req, res) {
   var title = req.body.title;
   model.pageViewModel.findOne({title: title}, function(err, page) {
-    res.send(page);
+    res.status(200).send(page);
   });
 });
 

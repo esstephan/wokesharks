@@ -7,9 +7,9 @@ angular.module("wokeshark.pageView", [])
 			$scope[page].date = data.date;
 		})
 	})
-    $scope.getLink(/);
-	$scope.getLink(/products);
-    $scope.getLink(/checkout);
+    $scope.getPage('/');
+	$scope.getPage('/products');
+    $scope.getPage('/checkout');
 
 	$scope.sendPage('/pageView', function(page) {
 		var newPage = {
@@ -20,4 +20,8 @@ angular.module("wokeshark.pageView", [])
 			console.log("page sent");
 		})
 	})
+
+	$scope.sendPage('/');
+	$scope.sendPage('/products');
+    $scope.sendPage('/checkout');
 })

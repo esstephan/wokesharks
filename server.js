@@ -42,13 +42,13 @@ app.post('/linkClick', function(req, res) {
   model.linkClickModel.findOne({url: url}, function(err, link) {
     console.log(link)
   });
-  model.linkClickModel.create({
-    url: req.body.url,
-    count: 1,
-    date: [date]
-  }, function(err, link) {
-    res.send(link);
-  });
+  // model.linkClickModel.create({
+  //   url: req.body.url,
+  //   count: 1,
+  //   date: [date]
+  // }, function(err, link) {
+  //   res.send(link);
+  // });
 });
 
 app.post('/pageView', function(req, res) {

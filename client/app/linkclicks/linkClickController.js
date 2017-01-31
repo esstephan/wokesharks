@@ -1,10 +1,12 @@
 angular.module("wokeshark.linkClick", [])
 .controller("linkClickController", function($scope, $http) {
 
+$scope.testprop = 4;
 //make request for a single link, this will be /products, /addToCart, or /checkout
   $scope.getLink = function(url) {
     $http.get('/linkClick'+ url)
     .then(function (data) {
+      $scope.testprop = 3;
       $scope[url].count = data.count;
       console.log("count of link clicks retrieved from server for ", url, " is ", $scope[url].count);
       $scope[url].url = data.url;

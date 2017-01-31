@@ -47,7 +47,7 @@ app.post('/linkClick', function(req, res) {
   //   count: 1,
   //   date: [date]
   // }, function(err, link) {
-  //   res.send(link);
+     res.send(link);
   // });
 });
 

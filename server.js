@@ -36,18 +36,22 @@ app.get('/pageView', function(req, res) {
 });
 
 app.post('/linkClick', function(req, res) {
+  var date = Date();
   model.linkClickModel.create({
     url: req.body.url,
-    count: 1
+    count: 1,
+    date: [date]
   }, function(err, products) {
     res.send(products);
   });
 });
 
 app.post('/pageView', function(req, res) {
+  var date = Date();
   model.pageViewModel.create({
     title: req.body.title,
-    count: 1
+    count: 1,
+    date: [date]
   }, function(err, products) {
     res.send(products);
   });

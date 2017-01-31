@@ -24,14 +24,12 @@ visualization is selected-->
 
 
 <!--Right side featured stats -->
-  <div class="col-md-4" ng-model="linkClickData">
-    <h1>featured stats go here</h1>
-    <h2>testprop is: {{testprop}}</h2>
-    <h2>{{product.url}}</h2>
-    <h2>{{product.count}}</h2>
-    <h3>Dates on which this link was clicked:</h3>
+  <div class="col-md-4" ng-model="linkClickData" ng-repeat="link in linkcounts">
+    <h4>{{link.url}}</h4>
+    <h4>{{link.count}}</h4>
+    <p>Dates on which this link was clicked:</p>
     <ul>
-    <li ng-repeat="date in product.count.dates"></li>
+    <li ng-repeat="date in link.dates">{{date}}</li>
     </ul>
   </div>
 

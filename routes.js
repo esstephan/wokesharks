@@ -9,11 +9,11 @@ module.exports = function(app, express) {
   app.get('/linkClick', function(req, res) {
     var url = req.body.url;
     //find url in database
-    model.linkClickModel.findOnce({"url": url}, function(err, links) {
+    model.linkClickModel.findOnce({url: url}, function(err, link) {
       if(err) {
         throw err;
       } else {
-        res.status(200).send(links);
+        res.status(200).send(link);
       }
     });
   });

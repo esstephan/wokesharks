@@ -23,26 +23,31 @@ app.use(express.static(path.join(__dirname, 'client')));
 //connect routes
 app.get('/linkClick', function(req, res) {
   var url = req.body.url;
-  model.linkClickModel.findOne({url: url}, function(err, products) {
-    res.send(products);
+  model.linkClickModel.findOne({url: url}, function(err, link) {
+    res.send(link);
   });
 });
 
 app.get('/pageView', function(req, res) {
   var title = req.body.title;
-  model.pageViewModel.findOne({title: title}, function(err, products) {
-    res.send(products);
+  model.pageViewModel.findOne({title: title}, function(err, page) {
+    res.send(page);
   });
 });
 
 app.post('/linkClick', function(req, res) {
+  var url = req.body.url;
   var date = Date();
+
+  model.linkClickModel.findOne({url: url}, function(err, link) {
+    console.log(link)
+  });
   model.linkClickModel.create({
     url: req.body.url,
     count: 1,
     date: [date]
-  }, function(err, products) {
-    res.send(products);
+  }, function(err, link) {
+    res.send(link);
   });
 });
 

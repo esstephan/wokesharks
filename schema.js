@@ -2,8 +2,7 @@
 var mongoose = require('mongoose');
 
 //connect to mongo database via heroku
-mongoose.connect('mongodb://heroku_6zbmk6ll:qe3h9hugfbbro9rs5i6n861p5r@ds137759.mlab.com:37759/heroku_6zbmk6ll');
-//mongoose.connect('mongodb://localhost:8080/data/db');
+mongoose.connect('mongodb://heroku_5nm2kzjp:48fp17v2bdrbru057aeov3jopg@ds139619.mlab.com:39619/heroku_5nm2kzjp');
 
 //open a mongoose connection
 var db = mongoose.connection;
@@ -15,8 +14,6 @@ db.on('error', console.error.bind(console, 'connection error'));
 db.once('open', function() {
   console.log('Successfuly connected to database')
 });
-
-module.exports = db;
 
 //create new linkClick schema
 var linkClickSchema = mongoose.Schema({

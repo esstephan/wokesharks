@@ -5,23 +5,25 @@
 <!--Left side overview
 Displays identical summary information for page regardless of which
 visualization is selected-->
-  <div class="col-md-4">
-  <h2>{{pagename}}</h2>
+  <div class="col-md-3">
+  <h3>{{pagename}}</h3>
 
-  <h2>Pageviews for your site:</h2>
+  <h3>Pageviews for your site:</h3>
 
   <div class="pageviews">{{views}}</div>
 
-  <h2>Clicks on your site:</h2>
+  <h3>Clicks on your site:</h3>
     <div class="linkclicks">{{clicks}}</div>
   </div>
 
 <!--Center featured chart -->
-  <div class="col-md-4">
+  <div class="col-md-5">
 <h1>visualization goes here</h1>
 <a href = "http://www.fakeaddress.com/test" ng-click=sendLink($event.target.href)></a>
+<h3>{{allData}}</h3>
   </div>
-
+}
+}
 
 <!--Right side featured stats -->
   <div class="col-md-4" ng-model="linkClickData" ng-repeat="link in linkcounts">

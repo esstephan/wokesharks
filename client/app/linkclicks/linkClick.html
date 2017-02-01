@@ -29,7 +29,7 @@ visualization is selected-->
     <h4>{{link.count}}</h4>
     <p>Dates on which this link was clicked:</p>
     <ul>
-    <li ng-repeat="date in link.dates">{{date}}</li>
+    <li ng-repeat="date in link.dates track by $index">{{date}}</li>
     </ul>
   </div>
 

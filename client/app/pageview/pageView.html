@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <div id='pageview-container' ng-controller='pageViewController'>
+=======
+<div id='linkclick-container' ng-controller='linkClickController'>
+>>>>>>> 3d90cffadd79ed788d7426ff5be4ee5c65f9b657
 
 <div class = "row">
 
@@ -19,17 +23,30 @@ visualization is selected-->
 <!--Center featured chart -->
   <div class="col-md-4">
 <h1>visualization goes here</h1>
+
 <a href = "http://www.fakeaddress.com/test" ng-click=sendPage($event.target.href)></a>
+
+<a href = "http://www.fakeaddress.com/test" ng-click=sendLink($event.target.href)></a>
   </div>
 
 
 <!--Right side featured stats -->
+
   <div class="col-md-4" ng-model="pageData" ng-repeat="page in pageProperties">
-    <h4>{{link.url}}</h4>
-    <h4>{{link.count}}</h4>
-    <p>Dates on which this link was clicked:</p>
+    <h4>{{page.url}}</h4>
+    <h4>{{page.count}}</h4>
+    <p>Dates on which this page was clicked:</p>
     <ul>
-    <li ng-repeat="date in page.dates track by $index">{{date}}</li>
+    <li ng-repeat="date in page.date track by $index">{{date}}</li>
+
+  <div class="col-md-4" ng-model="linkClickData">
+    <h1>featured stats go here</h1>
+    <h2>{{product.url}}</h2>
+    <h2>{{product.count}}</h2>
+    <h3>Dates on which this link was clicked:</h3>
+    <ul>
+    <li ng-repeat="date in product.count.dates"></li>
+
     </ul>
   </div>
 
@@ -39,4 +56,5 @@ visualization is selected-->
 
 
 
+</div>
 </div>

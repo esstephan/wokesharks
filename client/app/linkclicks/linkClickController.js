@@ -41,9 +41,12 @@ $scope.linkcounts ={};
   //   });
   // })
 
+  $scope.getLink("Buy");
   $scope.getLink("Buyify");
+  $scope.getLink("shooping_cart");
   $scope.getLink("Add To Cart");
   $scope.getLink("Products");
+
 
   });
 

@@ -7,6 +7,14 @@
 
 // var linkClickSchema = new Schema({
 // var linkClickSchema = mongoose.Schema({
+// var linkClickSchema = new Schema({
+//   url: String,
+//   count: Number,
+//   date: Array
+// });
+
+// //define a mongoose Model
+// module.exports = mongoose.model('LinkClick', linkClickSchema);
 
 //   url: String,
 //   count: Number,

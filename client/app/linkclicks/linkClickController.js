@@ -1,36 +1,27 @@
 angular.module("wokeshark.linkClick", [])
-.controller("linkClickController", function($scope, $http) {
+.controller("linkClickController", function($scope, Links) {
 
 $scope.linkcounts ={};
 
-var allLinks = [];
-//additional functionality: make request for all links at once
-  $scope.getAllLinks = function (url) {
-    $http({
-    url: '/linkClick',
-    method: "GET"
-    })
+make request for all links at once
+  $scope.getAllLinks = function () {
+    Links.getAll()
     .then (function (response, err) {
       if (err) {
         console.log('error', err)
       } else {
-        for (link in response.data){
-          allLinks.push(link);
-        }
+        $scope.allData = response.data;
       }
-    })
-  }
+    }
+  };
 
-console.log('allLinks', allLinks);
+$scope.getAllLinks();
+
 //call getLink on each one of the urls in allLinks
 
 //make request for a single link, this will be /products, /addToCart, or /checkout
   $scope.getLink = function(url) {
-    $http({
-    url: '/linkClick',
-    method: "GET",
-    params: {"url": url}
-    })
+    Links.getLink()
     .then(function (response, err) {
       if (err) {
         console.log('error', err)
@@ -41,13 +32,9 @@ console.log('allLinks', allLinks);
       console.log("count of link clicks retrieved from server for ", url, " is ", $scope.linkcounts[url].count);
       $scope.linkcounts[url].url = url;
       $scope.linkcounts[url].dates = response.data.date;
-      console.log("scope is ", $scope);
     }
   })
   };
-
-
-
 
 //additional (maybe not needed?) functionality: send new link
   // $scope.sendLink = function(link){
@@ -62,15 +49,17 @@ console.log('allLinks', allLinks);
   //   });
   // })
 
-  $scope.getLink("Buy");
-  $scope.getLink("Buyify");
-  $scope.getLink("shopping_cart");
-  $scope.getLink("Add To Cart");
-  $scope.getLink("Products");
+  // $scope.getLink("Buy");
+  // $scope.getLink("Buyify");
+  // $scope.getLink("shopping_cart");
+  // $scope.getLink("Add To Cart");
+  // $scope.getLink("Products");
 
-  $scope.getLink("penguins");
-  $scope.getLink("addToCart");
-  $scope.getLink("checkout");
+  // $scope.getLink("penguins");
+  // $scope.getLink("addToCart");
+  // $scope.getLink("checkout");
 
   });
+
+module.exports()
 

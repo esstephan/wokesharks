@@ -19,18 +19,17 @@ visualization is selected-->
 <!--Center featured chart -->
   <div class="col-md-4">
 <h1>visualization goes here</h1>
-<a href = "http://www.fakeaddress.com/test" ng-click=sendLink($event.target.href)></a>
+<a href = "http://www.fakeaddress.com/test" ng-click=sendPage($event.target.href)></a>
   </div>
 
 
 <!--Right side featured stats -->
-  <div class="col-md-4" ng-model="linkClickData">
-    <h1>featured stats go here</h1>
-    <h2>{{product.url}}</h2>
-    <h2>{{product.count}}</h2>
-    <h3>Dates on which this link was clicked:</h3>
+  <div class="col-md-4" ng-model="pageData" ng-repeat="page in pageProperties">
+    <h4>{{link.url}}</h4>
+    <h4>{{link.count}}</h4>
+    <p>Dates on which this link was clicked:</p>
     <ul>
-    <li ng-repeat="date in product.count.dates"></li>
+    <li ng-repeat="date in page.dates track by $index">{{date}}</li>
     </ul>
   </div>
 

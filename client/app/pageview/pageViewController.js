@@ -17,7 +17,7 @@ angular.module("wokeshark.pageView", [])
       $scope.pageProperties[page] = {};
       $scope.pageCount[page].title = ourData.title;
       $scope.pageCount[page].count = ourData.count;
-      $scope.pageCount[page].date = ourData.date;
+      $scope.pageCount[page].dates = ourData.date;
     }
   })
   };

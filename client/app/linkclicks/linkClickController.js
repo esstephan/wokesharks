@@ -3,22 +3,22 @@ angular.module("wokeshark.linkClick", [])
 
 $scope.linkcounts ={};
 
-make request for all links at once
+//make request for all links at once
   $scope.getAllLinks = function () {
-    Links.getAll()
+    Links.getAllLinks()
     .then (function (response, err) {
       if (err) {
         console.log('error', err)
       } else {
         $scope.allData = response.data;
       }
-    }
+    });
   };
 
 $scope.getAllLinks();
 
 //call getLink on each one of the urls in allLinks
-
+var url = 'checkout'
 //make request for a single link, this will be /products, /addToCart, or /checkout
   $scope.getLink = function(url) {
     Links.getLink()
@@ -61,5 +61,4 @@ $scope.getAllLinks();
 
   });
 
-module.exports()
 

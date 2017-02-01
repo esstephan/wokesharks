@@ -1,6 +1,7 @@
 angular.module('wokeshark',
   ['wokeshark.pageView',
   'wokeshark.linkClick',
+  'wokeshark.factory',
   'ngRoute'])
 
 .config(function ($routeProvider, $httpProvider) {

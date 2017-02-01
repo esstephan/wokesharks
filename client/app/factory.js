@@ -10,7 +10,7 @@ angular.module('wokeshark.factory', [])
       url: '/linkClickAll'
     })
     .then(function (response) {
-      return response.data;
+      return response;
     });
   };
 
@@ -44,7 +44,7 @@ angular.module('wokeshark.factory', [])
       url: '/pageViewAll'
     })
     .then(function (response) {
-      return response.data;
+      return response;
     });
   };
 

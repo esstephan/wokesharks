@@ -6,7 +6,7 @@ module.exports = function(app, express) {
 
   /* linkClick route */
   //GET request for all data
-  app.get('/linkClick', function(req, res) {
+  app.get('/linkClickAll', function(req, res) {
     //find all urls in database
     model.linkClickModel.find({}, function(err, links) {
       if(err) {
@@ -64,7 +64,7 @@ module.exports = function(app, express) {
 
   /* pageView route */
   //GET request for a specified page
-  app.get('/pageView', function(req, res) {
+  app.get('/pageViewAll', function(req, res) {
     //find all pages in database
     model.pageViewModel.find({}, function(err, pages) {
       if(err) {

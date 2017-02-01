@@ -6,7 +6,6 @@ var path = require('path');
 var cors = require ('cors');
 var app = express();
 var fs = require('fs');
-var cors = require ('cors');
 
 //enable CORS
 app.use(cors());
@@ -30,6 +29,7 @@ console.log('Listening on port ' + port);
 
 //export app and server
 module.exports = app;
+
 
 
 

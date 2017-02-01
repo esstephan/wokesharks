@@ -21,10 +21,7 @@ var allLinks = [];
 
 $scope.getAllLinks();
 
-
-
 //call getLink on each one of the urls in allLinks
-var url = 'checkout'
 //make request for a single link, this will be /products, /addToCart, or /checkout
   $scope.getLink = function(url) {
     Links.getLink(url)
@@ -32,16 +29,18 @@ var url = 'checkout'
       if (err) {
         console.log('error', err)
       } else {
-        console.log("response", response.data)
-      $scope.linkcounts[url] = {};
-      $scope.linkcounts[url].count = 0;
-      $scope.linkcounts[url].count = response.data.count;
-      console.log("count of link clicks retrieved from server for ", url, " is ", $scope.linkcounts[url].count);
-      $scope.linkcounts[url].url = url;
-      $scope.linkcounts[url].dates = response.data.date;
-    }
-  })
+        //console.log("response", response.data)
+        $scope.linkcounts[url] = {};
+        $scope.linkcounts[url].count = 0;
+        $scope.linkcounts[url].count = response.data.count;
+        //console.log("count of link clicks retrieved from server for ", url, " is ", $scope.linkcounts[url].count);
+        $scope.linkcounts[url].url = url;
+        $scope.linkcounts[url].dates = response.data.date;
+      }
+    })
   };
+
+
 
 //additional (maybe not needed?) functionality: send new link
   // $scope.sendLink = function(link){
@@ -66,6 +65,6 @@ var url = 'checkout'
   // $scope.getLink("addToCart");
   // $scope.getLink("checkout");
 
-  });
+});
 
 

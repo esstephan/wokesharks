@@ -29,13 +29,13 @@ visualization is selected-->
 <!--Right side featured stats -->
 
   <div class="col-md-4" ng-model="pageData" ng-repeat="page in pageProperties">
-    <h4>{{page.url}}</h4>
+    <h4>{{page.title}}</h4>
     <h4>{{page.count}}</h4>
     <p>Dates on which this page was clicked:</p>
     <ul>
     <li ng-repeat="date in page.date track by $index">{{date}}</li>
 
-  <div class="col-md-4" ng-model="linkClickData">
+  <!-- <div class="col-md-4" ng-model="linkClickData">
     <h1>featured stats go here</h1>
     <h2>{{product.url}}</h2>
     <h2>{{product.count}}</h2>
@@ -44,7 +44,8 @@ visualization is selected-->
     <li ng-repeat="date in product.count.dates"></li>
 
     </ul>
-  </div>
+  </div> -->
+
 
 </div>
 

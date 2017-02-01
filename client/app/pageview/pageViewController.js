@@ -1,18 +1,30 @@
 angular.module("wokeshark.pageView", [])
 .controller("pageViewController", function($scope, $http) {
-	$scope.getPage = function(page) {
-		$http.get('/pageView' + page).then(function (data) {
-			$scope[page].title = data.title;
-			$scope[page].count = data.count;
-			$scope[page].date = data.date;
-		})
 
-	}
+  $scope.pageProperties ={};
+//make request for a single link, this will be /products, /addToCart, or /checkout
+  $scope.getPage = function(page) {
+    $http({
+    page: '/pageView',
+    method: "GET",
+    params: {"title": title}
+    })
+    .then(function (data, err) {
+      if (err){
+        console.log('error', err)
+      } else {
+      var ourData = data.data;
+      $scope.pageProperties[page] = {};
+      $scope.pageCount[page].title = ourData.title;
+      $scope.pageCount[page].count = ourData.count;
+      $scope.pageCount[page].date = ourData.date;
+    }
+  })
+  };
 
-  $scope.getPage('/');
-	$scope.getPage('/products');
-  $scope.getPage('/checkout');
 
+
+/*
 	$scope.sendPage = $http.post('/pageView', function(page) {
 		var newPage = {
 			title: page.title,
@@ -26,4 +38,5 @@ angular.module("wokeshark.pageView", [])
 	$scope.sendPage('/');
 	$scope.sendPage('/products');
     $scope.sendPage('/checkout');
+    */
 })

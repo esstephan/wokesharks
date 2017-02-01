@@ -41,9 +41,9 @@ $scope.linkcounts ={};
   //   });
   // })
 
-  $scope.getLink("penguins");
-  $scope.getLink("addToCart");
-  $scope.getLink("checkout");
+  $scope.getLink("Buyify");
+  $scope.getLink("Add To Cart");
+  $scope.getLink("Products");
 
   });
 

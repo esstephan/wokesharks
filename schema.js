@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 
 //connect to mongo database via heroku
-mongoose.connect('mongodb://heroku_5nm2kzjp:48fp17v2bdrbru057aeov3jopg@ds139619.mlab.com:39619/heroku_5nm2kzjp');
+mongoose.connect('mongodb://heroku_sljnwp26:et582bohep8jaij010rtgrg7e6@ds139619.mlab.com:39619/heroku_sljnwp26');
 
 //open a mongoose connection
 var db = mongoose.connection;

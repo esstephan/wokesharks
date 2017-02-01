@@ -16,8 +16,6 @@ db.once('open', function() {
   console.log('Successfuly connected to database')
 });
 
-module.exports = db;
-
 //create new linkClick schema
 var linkClickSchema = mongoose.Schema({
   url: String,

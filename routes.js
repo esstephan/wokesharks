@@ -5,13 +5,24 @@ var model = require('./schema.js')
 module.exports = function(app, express) {
 
   /* linkClick route */
-  //GET request
+  //GET request for all data
+  app.get('/linkClick', function(req, res) {
+    //find all urls in database
+    model.linkClickModel.find({}, function(err, links) {
+      if(err) {
+        throw err;
+      } else {
+        res.status(200).send(links);
+      }
+    });
+  });
+
+  //GET request for a specified url
   app.get('/linkClick', function(req, res) {
     //pull url from query
     var url = req.query.url;
     //find url in database
     model.linkClickModel.findOne({url: url}, function(err, link) {
-      console.log(link);
       if(err) {
         throw err;
       } else {
@@ -34,7 +45,7 @@ module.exports = function(app, express) {
         link.date.push(date);
         link.save();
         res.status(200).send("Successfully updated link count")
-      //if not, create new record, set count to 1 and add timestamp
+      //if not, create new record, set count to 1 and add timestamp (in array)
       } else {
         model.linkClickModel.create({
           url: url,
@@ -52,7 +63,19 @@ module.exports = function(app, express) {
   });
 
   /* pageView route */
-  //GET request
+  //GET request for a specified page
+  app.get('/pageView', function(req, res) {
+    //find all pages in database
+    model.pageViewModel.find({}, function(err, pages) {
+      if(err) {
+        throw err;
+      } else {
+        res.status(200).send(pages);
+      }
+    });
+  });
+
+  //GET request for a specified page
   app.get('/pageView', function(req, res) {
     //pull title from query
     var title = req.query.title;
@@ -80,7 +103,7 @@ module.exports = function(app, express) {
         page.date.push(date);
         page.save();
         res.status(200).send("Successfully updated page count")
-      //if not, create new record, set count to 1 and add timestamp
+      //if not, create new record, set count to 1 and add timestamp (in array)
       } else {
         model.pageViewModel.create({
           title: title,

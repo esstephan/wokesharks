@@ -24,6 +24,12 @@ angular.module("wokeshark.pageView", [])
 
 
 
+
+  $scope.getPage('/');
+	$scope.getPage('/products');
+  $scope.getPage('/checkout');
+
+
 /*
 	$scope.sendPage = $http.post('/pageView', function(page) {
 		var newPage = {

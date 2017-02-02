@@ -1,6 +1,6 @@
-var app = angular.module('wokesharks.plotly', [])
+var app = angular.module('wokesharks.linkClickPlotly', [])
 
-.controller('clickVisualsController', function ($scope, Links) {
+.controller('linkClickVisualsController', function ($scope, Links) {
 
     var allUrls = [];
     var allCounts = [];
@@ -27,7 +27,7 @@ var app = angular.module('wokesharks.plotly', [])
         scope.$watch('data', function (plots) {
             var layout = {
               'title': 'Link Clicks',
-              'width': 500,
+              'width': 600,
               'height': 300,
               'margin': { 't': 40, 'b':20, 'l':40, 'r':0 },
             };

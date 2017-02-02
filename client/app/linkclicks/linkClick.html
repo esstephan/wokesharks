@@ -21,10 +21,6 @@ visualization is selected-->
   <div class="col-md-2">
   <h4>{{pagename}}</h4>
 
-<!--   <h4>Total page views for your site:</h4>
-
-  <div class="pageviews">{{views}}</div> -->
-
   <h4>Total clicks on your site:</h4>
     <div class="linkclicks">{{clicks}}</div>
   </div>
@@ -32,10 +28,9 @@ visualization is selected-->
 <!--Center featured chart -->
 
   <div class="col-md-6">
-    <div id='pageview-container' ng-controller='clickVisualsController'>
-    <line-plot width=300, height=200>
-  </div>
-    <a href = "http://www.fakeaddress.com/test" ng-click=sendLink($event.target.href)></a>
+    <div id='pageview-container' ng-controller='linkClickVisualsController'>
+      <line-plot width=300, height=200>
+    </div>
   </div>
 
 

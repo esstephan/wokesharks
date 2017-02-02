@@ -5,3 +5,4 @@ angular.module('wokeshark.pageViewPlotly', [])
 		y: [10, 14, 22, 50]
 	}]
 })
+

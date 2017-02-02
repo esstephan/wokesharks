@@ -3,8 +3,6 @@ angular.module("wokeshark.pageView", [])
 
 
 $scope.pageProperties = {};
-var allPages = [];
-
 $scope.showAll = true;
 $scope.hideAll = false;
 

@@ -2,9 +2,9 @@ angular.module("wokeshark.linkClick", [])
 .controller("linkClickController", function($scope, Links) {
 
 $scope.linkcounts = {};
-var allLinks = [];
 $scope.showAll = true;
 $scope.hideAll = false;
+
 $scope.setShowAll = function(value) {
     $scope.showAll = value;
     $scope.hideAll = !value;

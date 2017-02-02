@@ -2,6 +2,7 @@ angular.module('wokeshark',
   ['wokeshark.pageView',
   'wokeshark.linkClick',
   'wokeshark.factory',
+  'wokesharks.plotly',
   'ngRoute'])
 
 .config(function ($routeProvider, $httpProvider) {

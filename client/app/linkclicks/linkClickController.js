@@ -17,6 +17,7 @@ $scope.setHideDates = function(value) {
     $scope.showDates = !value;
 }
 
+var allCounts = 0;
 //make request for all links at once
   $scope.getAllLinks = function () {
     Links.getAllLinks()
@@ -26,13 +27,18 @@ $scope.setHideDates = function(value) {
       } else {
         $scope.allData = response.data;
         response.data.forEach(function(item) {
+          allCounts+=item.count;
+          $scope.clicks = allCounts;
           $scope.getLink(item.url);
         })
       }
     });
   };
 
+
+
 $scope.getAllLinks();
+
 
 //call getLink on each one of the urls in allLinks
 //make request for a single link, this will be /products, /addToCart, or /checkout
@@ -49,6 +55,7 @@ $scope.getAllLinks();
         //console.log("count of link clicks retrieved from server for ", url, " is ", $scope.linkcounts[url].count);
         $scope.linkcounts[url].url = url;
         $scope.linkcounts[url].dates = response.data.date;
+
       }
     })
 

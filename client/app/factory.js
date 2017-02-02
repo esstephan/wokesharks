@@ -33,7 +33,6 @@ angular.module('wokeshark.factory', [])
 })
 
 
-
 /* PAGES FACTORY */
 .factory('Pages', function ($http) {
 

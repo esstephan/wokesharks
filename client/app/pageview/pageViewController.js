@@ -33,5 +33,5 @@ $scope.getAllPages = function () {
 }
 
 $scope.getAllPages();
-  
+
 })

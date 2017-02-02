@@ -26,10 +26,14 @@ var app = angular.module('wokesharks.linkClickPlotly', [])
     function linkFunc(scope, element, attrs) {
         scope.$watch('data', function (plots) {
             var layout = {
-              'title': 'Link Clicks',
-              'width': 600,
-              'height': 300,
-              'margin': { 't': 40, 'b':20, 'l':40, 'r':0 },
+              title: 'Link Clicks',
+              yaxis: {
+                title: 'Count',
+                titlefont: 'Arial'
+              },
+              width: 600,
+              height: 300,
+              margin: { 't': 40, 'b':20, 'l':40, 'r':0 },
             };
 
 
@@ -42,5 +46,31 @@ var app = angular.module('wokesharks.linkClickPlotly', [])
         link: linkFunc
     };
 });
+
+// xaxis: {
+//     title: 'AXIS TITLE',
+//     titlefont: {
+//       family: 'Arial, sans-serif',
+//       size: 18,
+//       color: 'lightgrey'
+//     },
+//     showticklabels: true,
+//     tickangle: 45,
+//     tickfont: {
+//       family: 'Old Standard TT, serif',
+//       size: 14,
+//       color: 'black'
+//     },
+  //   exponentformat: 'e',
+  //   showexponent: 'All'
+  // },
+  // yaxis: {
+  //   title: 'AXIS TITLE',
+  //   titlefont: {
+  //     family: 'Arial, sans-serif',
+  //     size: 18,
+  //     color: 'lightgrey'
+  //   },
+
 
 

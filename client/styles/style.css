@@ -1,8 +1,9 @@
-/* css released under Creative Commons License - http://creativecommons.org/licenses/by-nc-sa/1.0/  */
+/* css released under Creative Commons License - http://creativecommons.org/licenses/by-nc-sa/1.0/*/
 
 /* This file based on 'Tranquille' by Dave Shea */
 
 /* basic elements */
+
 html {
   margin: 0;
   padding: 0;
@@ -47,7 +48,7 @@ abbr {
     background-color: blue;
     overflow: hidden;
     text-align: center;
-    /*width: 1349px;*/ /*Not Required*/
+
 }
 
 .top-banner img{float:none}

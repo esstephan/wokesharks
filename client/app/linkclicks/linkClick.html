@@ -25,8 +25,8 @@ visualization is selected-->
 
 <!--Right side featured stats -->
   <div class="col-md-4" ng-model="linkClickData" ng-repeat="link in linkcounts">
-    <h4>{{link.url}}</h4>
-    <h4>{{link.count}}</h4>
+    <h4>Url: {{link.url}}</h4>
+    <h4>Count: {{link.count}}</h4>
     <p>Dates on which this link was clicked:</p>
     <ul>
     <li ng-repeat="date in link.dates track by $index">{{date}}</li>

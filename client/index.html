@@ -6,18 +6,16 @@
     <link rel='stylesheet' type='text/css' href="styles/style.css">
     <!--Importing bootstrap for page layout-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
     <!--Importing angular-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src = "app.js"></script>
     <script src = "./app/pageview/pageViewController.js"></script>
     <script src = "./app/linkclicks/linkClickController.js"></script>
     <script src = "./app/factory.js"></script>
   </head>
-
 <body>
-
 
 <!--Bootstrap container wrapper-->
 <div class="container-fluid">
@@ -29,19 +27,17 @@
 
 <!--Navigation bar - static -->
 <div class="row header">
-
-<div class='col-md-2'><h4>WOKESHARK</h4></div>
-<div class='col-md-1'><h4>|</h4></div>
-<div class='col-md-2'><h4>Overall</h4></div>
-<div class='col-md-1'><h4>|</h4></div>
-<div class='col-md-2'><h4><a href='#/pageView' routerLinkActive="active">Pageview report</a></h4></div>
-<div class='col-md-1'><h4>|</h4></div>
-<div class='col-md-2'><h4><a href='#/linkClick'>Link clicks report</h4></div>
-
+  <div class='col-md-2'><h4>WOKESHARK</h4></div>
+  <div class='col-md-1'><h4>|</h4></div>
+  <div class='col-md-2'><h4>Overall</h4></div>
+  <div class='col-md-1'><h4>|</h4></div>
+  <div class='col-md-2'><h4><a href='#/pageView' routerLinkActive="active">Pageview report</a></h4></div>
+  <div class='col-md-1'><h4>|</h4></div>
+  <div class='col-md-2'><h4><a href='#/linkClick'>Link clicks report</h4></div>
 </div>
 
-
 <div class="row" ng-view>
+
 
 <!--Left side overview
 Displays identical summary information for page regardless of which
@@ -68,9 +64,7 @@ Center featured chart -->
   </div> -->
 
 
-</div>
-
-
+  </div>
 </body>
 
 

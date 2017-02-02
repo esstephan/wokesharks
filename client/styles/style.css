@@ -3,7 +3,7 @@
 /* This file based on 'Tranquille' by Dave Shea */
 
 /* basic elements */
-/*
+
 html {
   margin: 0;
   padding: 0;
@@ -54,7 +54,7 @@ abbr {
 .top-banner img{float:none}
 
 /* specific divs */
-/*.page-wrapper {
+.page-wrapper {
   background: url(http://csszengarden.com/001/zen-bg.jpg) no-repeat top left;
   padding: 0 175px 0 110px;
   margin: 0;
@@ -77,8 +77,8 @@ header h1 {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
-  }*/
-/*header h2 {
+  }
+header h2 {
   background: transparent url(http://csszengarden.com/001/h2.gif) no-repeat top left;
   margin-top: 58px;
   margin-bottom: 40px;
@@ -121,8 +121,8 @@ footer {
   }
 footer a:link, footer a:visited {
   margin-right: 20px;
-  }*/
-/*
+  }
+
 .sidebar {
   margin-left: 600px;
   position: absolute;
@@ -165,9 +165,9 @@ footer a:link, footer a:visited {
   text-indent: 100%;
   white-space: nowrap;
   overflow: hidden;
-  }*/
+  }
 
-/*
+
 .sidebar ul {
   margin: 0;
   padding: 0;

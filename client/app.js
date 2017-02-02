@@ -2,6 +2,7 @@ angular.module('wokeshark',
   ['wokeshark.pageView',
   'wokeshark.linkClick',
   'wokeshark.factory',
+  'wokesharks.plotly',
   'ngRoute'])
 
 .config(function ($routeProvider, $httpProvider) {
@@ -19,7 +20,7 @@ angular.module('wokeshark',
       controller: 'pageViewController'
     })
     .when('/linkClickAll', {
-      templateUrl: 'app.linkclicks/linkClick.html',
+      templateUrl: 'app/linkclicks/linkClick.html',
       controller: 'linkClickController'
     })
     .when('/pageViewVisual', {

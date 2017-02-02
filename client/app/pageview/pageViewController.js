@@ -34,6 +34,7 @@ $scope.getPage = function(page) {
   })
   };
 
+var allViews = 0;
 $scope.getAllPages = function () {
   Pages.getAllPages().then(function (res, err) {
   	if (err) {
@@ -42,6 +43,9 @@ $scope.getAllPages = function () {
   	}
   	$scope.ourPages = res.data;
   	res.data.forEach(function (element) {
+      console.log(element.count)
+      allViews+=element.count;
+      $scope.views = allViews;
   		$scope.getPage(element.title);
   	})
   })

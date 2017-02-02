@@ -1,4 +1,3 @@
-
 <div id='pageview-container' ng-controller='pageViewController'>
 
 <div class = "row">
@@ -28,8 +27,10 @@
 
 
 <div class="col-md-6">
-    <a href = "http://www.fakeaddress.com/test" ng-click=sendPage($event.target.href)></a>
+  <div id='pageview-container'> //Add ng-controller
+    <line-plot width=300, height=200>
   </div>
+</div>
 <!--Right featured chart -->
 
 <div class="col-md-4" ng-hide="hideAll">

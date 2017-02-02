@@ -2,7 +2,8 @@ angular.module('wokeshark',
   ['wokeshark.pageView',
   'wokeshark.linkClick',
   'wokeshark.factory',
-  'wokesharks.plotly',
+  'wokesharks.linkClickPlotly',
+  'wokeshark.pageViewPlotly',
   'ngRoute'])
 
 .config(function ($routeProvider, $httpProvider) {
@@ -22,14 +23,6 @@ angular.module('wokeshark',
     .when('/linkClickAll', {
       templateUrl: 'app/linkclicks/linkClick.html',
       controller: 'linkClickController'
-    })
-    .when('/pageViewVisual', {
-      templateUrl: 'app/pageview/pageView.html',
-      controller: 'pageVisual'
-    })
-    .when('/linkViewVisual', {
-      templateUrl: 'app/linkclicks/linkClick.html',
-      controller: 'linkVisual'
     })
     .otherwise({
       redirectTo: '/'

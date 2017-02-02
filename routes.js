@@ -1,5 +1,5 @@
 //require schemas from Models folder
-var model = require('./schema.js')
+var model = require('./models.js')
 
 //export routes to app file
 module.exports = function(app, express) {

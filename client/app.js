@@ -12,7 +12,7 @@ angular.module('wokeshark',
     })
     .when('/linkClick', {
       templateUrl: 'app/linkclicks/linkClick.html',
-      controller: 'linkClickController'
+      // controller: 'linkClickController'
     })
     .when('/linkClickAll', {
       templateUrl: 'app/linkclicks/linkClick.html',

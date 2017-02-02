@@ -3,6 +3,19 @@ angular.module("wokeshark.linkClick", [])
 
 $scope.linkcounts = {};
 var allLinks = [];
+$scope.showAll = true;
+$scope.hideAll = false;
+$scope.setShowAll = function(value) {
+    $scope.showAll = value;
+    $scope.hideAll = !value;
+}
+
+$scope.showDates = true;
+$scope.hideDates = false;
+$scope.setHideDates = function(value) {
+    $scope.hideDates = value;
+    $scope.showDates = !value;
+}
 
 //make request for all links at once
   $scope.getAllLinks = function () {
@@ -38,6 +51,7 @@ $scope.getAllLinks();
         $scope.linkcounts[url].dates = response.data.date;
       }
     })
+
   };
 
 

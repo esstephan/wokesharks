@@ -1,24 +1,37 @@
 <div id='linkclick-container' ng-controller='linkClickController'>
 
+<!--top row-->
+<div class = "row">
+  <div class="col-md-3"></div>
+  <div class="col-md-5"></div>
+  <div class="col-md-4">
+  <button ng-hide="showAll" class="ng-hide" ng-click="setShowAll(true)">Show stats for all links</button>
+  <button ng-show="showAll" ng-click="setShowAll(false)">Hide stats for all links</button>
+  </div>
+</div>
+
+<!--main page content-->
+
 <div class = "row container-fluid">
 
 
 <!--Left side overview
 Displays identical summary information for page regardless of which
 visualization is selected-->
-  <div class="col-md-3">
-  <h3>{{pagename}}</h3>
+  <div class="col-md-2">
+  <h4>{{pagename}}</h4>
 
-  <h3>Pageviews for your site:</h3>
+  <h4>Pageviews for your site:</h4>
 
   <div class="pageviews">{{views}}</div>
 
-  <h3>Clicks on your site:</h3>
+  <h4>Clicks on your site:</h4>
     <div class="linkclicks">{{clicks}}</div>
   </div>
 
 <!--Center featured chart -->
-  <div class="col-md-5">
+
+  <div class="col-md-6">
     <h1>visualization goes here</h1>
 
     <a href = "http://www.fakeaddress.com/test" ng-click=sendLink($event.target.href)></a>
@@ -26,19 +39,23 @@ visualization is selected-->
 
 
 <!--Right side featured stats -->
-  <div class="col-md-4" ng-model="linkClickData" ng-repeat="link in linkcounts">
-    <h4>Url: {{link.url}}</h4>
-    <h4>Count: {{link.count}}</h4>
-    <p>Dates on which this link was clicked:</p>
+
+  <div class="col-md-4" ng-hide="hideAll">
+
+  <div ng-repeat="link in linkcounts">
+    <h4>{{link.url}}:  {{link.count}}</h4>
+    <p>Dates on which this link was clicked:</p><button ng-show="showDates" ng-click="setHideDates(true)">click to collapse</button><button ng-show="hideDates" ng-click="setHideDates(false)">click to expand</button>
     <ul>
-    <li ng-repeat="date in link.dates track by $index">{{date}}</li>
+    <li ng-hide="hideDates" ng-repeat="date in link.dates track by $index">{{date}}</li>
     </ul>
   </div>
 
+  </div>
+
+<!--close main container-->
 </div>
 
+<!-- close page container-->
 </div>
 
 
-
-</div>

@@ -11,26 +11,18 @@
 
 <div class = "row container-fluid">
 
-
   <div class="col-md-2">
-  <h4>{{pagename}}</h4>
-
-  <h4>Total page views for your site:</h4>
-  <div class="pageviews">{{views}}</div>
-
-  <!-- <h4>Total clicks on your site:</h4>
-    <div class="linkclicks">{{clicks}}</div> -->
+    <h4>{{pagename}}</h4>
+    <h4>Total page views for your site:</h4>
+    <div class="pageviews">{{views}}</div>
   </div>
 
-<!--Center featured chart -->
-
-
-
-<div class="col-md-6">
-  <div id='pageview-container'> //Add ng-controller
-    <line-plot width=300, height=200>
+  <!--Center featured chart -->
+  <div class="col-md-6">
+    <div id='pageview-container'> //Add ng-controller
+      <line-plot width=300, height=200>
+    </div>
   </div>
-</div>
 <!--Right featured chart -->
 
 <div class="col-md-4" ng-hide="hideAll">

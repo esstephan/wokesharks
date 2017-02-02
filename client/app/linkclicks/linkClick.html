@@ -11,22 +11,17 @@
 </div>
 
 <!--main page content-->
-
 <div class = "row container-fluid">
-
-
 <!--Left side overview
 Displays identical summary information for page regardless of which
 visualization is selected-->
   <div class="col-md-2">
-  <h4>{{pagename}}</h4>
-
-  <h4>Total clicks on your site:</h4>
+    <h4>{{pagename}}</h4>
+    <h4>Total clicks on your site:</h4>
     <div class="linkclicks">{{clicks}}</div>
   </div>
 
 <!--Center featured chart -->
-
   <div class="col-md-6">
     <div id='pageview-container' ng-controller='linkClickVisualsController'>
       <line-plot width=300, height=200>

@@ -14,9 +14,13 @@
     <script src = "./app/pageview/pageViewController.js"></script>
     <script src = "./app/linkclicks/linkClickController.js"></script>
     <script src = "./app/factory.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   </head>
-<body>
+<body ng-app="pageGraph">
 
+<div ng-controller="PlotController">
+  {{data}}
+</div>
 <!--Bootstrap container wrapper-->
 <div class="container-fluid">
 
@@ -37,6 +41,7 @@
 <div class='col-md-2'><h4><a href='#/linkClick'>Link clicks report</a></h4></div>
 
 </div>
+
 
 <div class="row" ng-view>
 

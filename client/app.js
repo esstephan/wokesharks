@@ -22,6 +22,14 @@ angular.module('wokeshark',
       templateUrl: 'app.linkclicks/linkClick.html',
       controller: 'linkClickController'
     })
+    .when('/pageViewVisual', {
+      templateUrl: 'app/pageview/pageView.html',
+      controller: 'pageVisual'
+    })
+    .when('/linkViewVisual', {
+      templateUrl: 'app/linkclicks/linkClick.html',
+      controller: 'linkVisual'
+    })
     .otherwise({
       redirectTo: '/'
     })

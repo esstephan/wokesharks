@@ -1,8 +1,7 @@
-/*
-angular.module('pageViewVisual', []).factory('d3PageService', ['$document', '$q',
-	'$rootScope', function ($document, $q, $rootScope) {
-	var d3;
-
-	return d3;
-}])
-*/
+angular.module('pageGraph', [])
+.controller('PlotController', function($scope) {
+	$scope.data = [{
+		x: [1, 2, 3, 4],
+		y: [10, 14, 22, 50]
+	}]
+})

@@ -11,8 +11,8 @@ angular.module('wokeshark.pageViewPlotly', [])
 				allCounts.push(element.count)
 			})
 			$scope.data = [{
-				name: "Page View", 
-				x: allTitles, 
+				name: "Page View",
+				x: allTitles,
 				y: allCounts,
 				type: 'bar'
 			}];
@@ -21,26 +21,30 @@ angular.module('wokeshark.pageViewPlotly', [])
 	$scope.refresh();
 })
 
-.directive('linePlot', function() {
-	function pageFunc(scope, element, attributes) {
-		scope.$watch('data', function (plots) {
-			var layout = {
-				title: 'Page View',
-				yaxis: {
-					title: 'Count',
-					titlefront: 'Arial'
-				},
-				width: 600,
-				height: 300, 
-				margin: {'t': 40, 'b': 20, 'l': 40, 'r': 0}
-			};
+.controller("pageViewPieController", function ($scope, Pages) {
 
-			Plotly.newPlot(element[0], plots, layout)
-		}, true)
-	}
+  var allTitles = [];
+  var allCounts = [];
+  var percentage = [];
+  var totalCount = 0;
 
-	return {
-		page: pageFunc
-	};
+  $scope.refresh = function() {
+    Pages.getAllPages()
+      .then(function(response) {
+        response.data.forEach(function(item) {
+          totalCount+=item.count;
+          allTitles.push(item.title);
+          allCounts.push(item.count);
+        })
+        allCounts.forEach(function(count) {
+          percentage.push(count/totalCount*100)
+        })
+        $scope.data = {values: percentage, labels: allTitles, type: 'pie'};
+        $scope.data = [$scope.data];
+      });
+  };
+
+  $scope.refresh();
+
 })
 

@@ -43,7 +43,7 @@ $scope.getAllPages = function () {
   	}
   	$scope.ourPages = res.data;
   	res.data.forEach(function (element) {
-      console.log(element.count)
+      //console.log(element.count)
       allViews+=element.count;
       $scope.views = allViews;
   		$scope.getPage(element.title);

@@ -47,30 +47,5 @@ var app = angular.module('wokesharks.linkClickPlotly', [])
     };
 });
 
-// xaxis: {
-//     title: 'AXIS TITLE',
-//     titlefont: {
-//       family: 'Arial, sans-serif',
-//       size: 18,
-//       color: 'lightgrey'
-//     },
-//     showticklabels: true,
-//     tickangle: 45,
-//     tickfont: {
-//       family: 'Old Standard TT, serif',
-//       size: 14,
-//       color: 'black'
-//     },
-  //   exponentformat: 'e',
-  //   showexponent: 'All'
-  // },
-  // yaxis: {
-  //   title: 'AXIS TITLE',
-  //   titlefont: {
-  //     family: 'Arial, sans-serif',
-  //     size: 18,
-  //     color: 'lightgrey'
-  //   },
-
 
 

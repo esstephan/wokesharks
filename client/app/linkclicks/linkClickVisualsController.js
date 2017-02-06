@@ -134,7 +134,7 @@ angular.module('wokesharks.linkClickPlotly', [])
         var layout = {
           width: 400,
           height: 200,
-          margin: { 't': 20, 'b':20, 'l':20, 'r':0 },
+          margin: { 't': 40, 'b':20, 'l':40, 'r':0 },
         };
 
       Plotly.newPlot(element[0], plots, layout);

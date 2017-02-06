@@ -43,9 +43,29 @@ angular.module('wokesharks.linkClickPlotly', [])
       });
   };
 
+
+
   $scope.refresh();
 
 })
+
+.controller('linkClickLineController', function ($scope, Links) {
+
+  var allUrls = [];
+  var allCounts = [];
+
+  $scope.refresh = function() {
+    Links.getAllLinks()
+      .then(function(response) {
+        response.data.forEach(function(item) {
+          allUrls.push(item.url);
+          allCounts.push(item.count);
+        })
+        allCounts.sort();ß
+        $scope.data = {name: "Link Click", x: allUrls, y: allCounts, type: 'line'};
+        $scope.data = [$scope.data];
+      });
+  };
 
 .controller("linkClickDayController", function ($scope, Links) {
 
@@ -82,7 +102,6 @@ angular.module('wokesharks.linkClickPlotly', [])
   $scope.refresh();
 
 })
-
 
 .directive('linePlot', function () {
   // Create a link function

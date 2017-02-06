@@ -39,9 +39,8 @@ var allCounts = 0;
 
 $scope.getAllLinks();
 
-
 //call getLink on each one of the urls in allLinks
-//make request for a single link, this will be /products, /addToCart, or /checkout
+//in our mockup, these will be /buyify (homepage), /products, /addToCart, or /checkout
   $scope.getLink = function(url) {
     Links.getLink(url)
     .then(function (response, err) {

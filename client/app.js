@@ -16,14 +16,6 @@ angular.module('wokeshark',
       templateUrl: 'app/linkclicks/linkClick.html',
       controller: 'linkClickController'
     })
-    .when('/pageViewAll', {
-      templateUrl: 'app/pageview/pageView.html',
-      controller: 'pageViewController'
-    })
-    .when('/linkClickAll', {
-      templateUrl: 'app/linkclicks/linkClick.html',
-      controller: 'linkClickController'
-    })
     .when('/overall', {
       templateUrl: 'app/overall/overall.html',
       controller: 'linkClickVisualsController'

@@ -11,7 +11,6 @@ angular.module('wokeshark.pageViewPlotly', [])
 				allCounts.push(element.count)
 			})
 			$scope.data = [{
-				name: "Page View",
 				x: allTitles,
 				y: allCounts,
 				type: 'bar'
@@ -48,52 +47,8 @@ angular.module('wokeshark.pageViewPlotly', [])
 
 })
 
-angular.module('wokesharks.linkClickPlotly', [])
+.controller('pageViewDayController', function($scope, Pages) {
 
-.controller('pageViewVisualController', function ($scope, Pages) {
-  var allTitles = [];
-  var allCounts = [];
-
-  $scope.refresh = function () {
-    Pages.getAllPages().then(function (res) {
-      res.data.forEach(function (element) {
-        allPages.push(element.title);
-        allCounts.push(element.count);
-      })
-      $scope.data = {x: allTitles, y: allCounts, type: 'bar'};
-      $scope.data = [$scope.data];
-    })
-  };
-
-  $scope.refresh();
-})
-
-
-.controller('pageViewPieController', function($scope, Pages) {
-  var allTitles = []; // initialization
-  var allCounts = [];
-  var percentage = [];
-  var totalCount = 0;
-  
-  $scope.refresh = function() {
-    Pages.getAllPages().then(function (res) {
-      res.data.forEach(function (element) {
-        totalCount+=element.count;
-        allTitles.push(element.url);
-        allCounts.push(element.count);
-      })
-      allCounts.forEach(function (count) {
-        percentage.push(count/totalCount*100);
-      });
-      $scope.data = {values: percentage, labels: allTitles, type: 'pie'};
-      $scope.data = [$scope.data];
-    })
-  };
-
-  $scope.refresh();
-})
-
-.controller('linkClickDayController', function($scope, Pages) {
   var allTitles = [];
   var allDates = [];
   var everyDay = [];
@@ -102,41 +57,32 @@ angular.module('wokesharks.linkClickPlotly', [])
   $scope.refresh = function() {
     Pages.getAllPages().then(function(res) {
       res.data.forEach(function (element) {
-        element.data.forEach(function (specificElement) {
+        element.date.forEach(function (specificElement) {
           allDates.push(specificElement);
         })
     })
     allDates.forEach(function (day) {
       var day = day.slice(4, 10);
-      dates[day] ? dates[day]++ : 1; // if dates[day] exists, increment it, if not, initialize it to 1
+      if(dates[day]) {
+        dates[day] = dates[day] + 1;
+      } else {
+        dates[day] = 1; // if dates[day] exists, increment it, if not, initialize it to 1
+      }
     })
     var days = Object.keys(dates); // get the days
     for (var key in dates) {
       everyDay.push(dates[key]); // push each individual date onto everyDays
     }
-    $scope.data = {x: day, y: everyDay, type: 'scatter'};
+    $scope.data = {x: days, y: everyDay, type: 'scatter'};
     $scope.data = [$scope.data];
   });
-  }
+
+  };
+
+  $scope.refresh();
+
 })
 
-.directive('pagePlot', function () {
-  // Create page function
-  function pageFunc(scope, element, attrs) {
-    scope.$watch('data', function (plots) {
-      var layout: {
-        width: 600,
-        height: 300,
-        margin: {'t': 40, 'b': 20, 'l': 40, 'r': 0}
-      };
-      // new plot generated
-      Plotly.newPlot(element[0], plots, layout);
-    }, true);
-  }
 
 
-return {
-  page: pagefunc
-};
 
-});

@@ -12,7 +12,7 @@ angular.module('wokesharks.linkClickPlotly', [])
           allUrls.push(item.url);
           allCounts.push(item.count);
         })
-        $scope.data = {name: "Link Click", x: allUrls, y: allCounts, type: 'bar'};
+        $scope.data = {x: allUrls, y: allCounts, type: 'bar'};
         $scope.data = [$scope.data];
       });
   };
@@ -39,6 +39,42 @@ angular.module('wokesharks.linkClickPlotly', [])
           percentage.push(count/totalCount*100)
         })
         $scope.data = {values: percentage, labels: allUrls, type: 'pie'};
+        $scope.data = [$scope.data];
+      });
+  };
+
+  $scope.refresh();
+
+})
+
+.controller("linkClickDayController", function ($scope, Links) {
+
+  var allUrls = [];
+  var allDates = [];
+  var everyDay = [];
+  var dates = {};
+
+  $scope.refresh = function() {
+    Links.getAllLinks()
+      .then(function(response) {
+        response.data.forEach(function(item) {
+          item.date.forEach(function(element) {
+            allDates.push(element);
+          })
+        })
+        allDates.forEach(function(day) {
+          var day = day.slice(4,10);
+          if(dates[day]) {
+            dates[day] = dates[day] + 1;
+          } else {
+            dates[day] = 1;
+          }
+        })
+        var days = Object.keys(dates);
+        for (var key in dates) {
+          everyDay.push(dates[key]);
+        }
+        $scope.data = {x: days, y: everyDay, type: 'scatter'};
         $scope.data = [$scope.data];
       });
   };

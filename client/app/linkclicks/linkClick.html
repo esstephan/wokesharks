@@ -24,17 +24,21 @@ visualization is selected-->
 <!--Center featured chart -->
   <div class="col-md-6">
     <h4 align='center'>Link Clicks</h4>
-    <div id='pageview-container' ng-controller='linkClickVisualsController'>
+    <div ng-controller='linkClickVisualsController'>
       <line-plot width=300, height=200>
     </div><br><br>
     <h4 align='center'>Percentage of Total Clicks</h4>
-    <div id='pageview-container' ng-controller='linkClickPieController'>
+    <div ng-controller='linkClickPieController'>
       <line-plot width=300, height=200>
     </div><br><br>
     <h4 align='center'>Total Clicks Per Day</h4>
-    <div id='pageview-container' ng-controller='linkClickDayController'>
+    <div ng-controller='linkClickDayController'>
       <line-plot width=300, height=200>
-    </div><br><br>
+    </div><br><br>3
+   <!--  <h4 align='center'>Link Clicks in Order</h4>
+    <div ng-controller='linkClickLineController'>
+      <line-plot width=300, height=200>
+    </div><br> -->
   </div>
 
 

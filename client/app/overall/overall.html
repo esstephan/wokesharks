@@ -1,21 +1,27 @@
 <!--Center featured chart -->
-  <div ng-controller='linkClickController'>
-    <h4 align='center'>Link Clicks</h4>
-    <div id='pageview-container' ng-controller='linkClickVisualsController'>
-        <line-plot width=300, height=200>
-      </div><br><br>
-    <h4 align='center'>Percentage of Total Clicks</h4>
-    <div id='pageview-container' ng-controller='linkClickPieController'>
-      <line-plot width=300, height=200>
-    </div><br>
-    <div>
-      <h4 align='center'>Page Views</h4>
-      <div id='pageview-container' ng-controller='pageViewVisualsController'>
-        <line-plot id='pageView' width=300, height=200>
-      </div><br><br>
-      <h4 align='center'>Percentage of Total Views</h4>
-      <div id='pageview-container' ng-controller='pageViewPieController'>
-        <line-plot width=300, height=200>
-      </div><br>
+  <div class='overallContainer' ng-controller='linkClickController'>
+    <div class='overall' ng-controller='linkClickVisualsController'>
+    <h4>Link Clicks</h4>
+      <overall-plot width=150, height=100>
+    </div>
+    <div class='overall' ng-controller='linkClickPieController'>
+    <h4>Percentage of Total Clicks</h4>
+      <overall-plot width=150, height=100>
+    </div>
+    <div class='overall' ng-controller='linkClickDayController'>
+    <h4>Total Clicks Per Day</h4>
+      <overall-plot width=150, height=100>
+    </div>
+    <div class='overall' ng-controller='pageViewVisualsController'>
+    <h4>Page Views</h4>
+      <overall-plot id='pageView' width=150, height=100>
+    </div>
+    <div class='overall' ng-controller='pageViewPieController'>
+    <h4>Percentage of Total Views</h4>
+      <overall-plot width=150, height=100>
+    </div>
+    <div class='overall' ng-controller='pageViewDayController'>
+    <h4>Total Page Views Per Day</h4>
+      <overall-plot width=150, height=100>
     </div>
   </div>

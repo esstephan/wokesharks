@@ -43,6 +43,8 @@ angular.module('wokesharks.linkClickPlotly', [])
       });
   };
 
+
+
   $scope.refresh();
 
 })
@@ -83,27 +85,68 @@ angular.module('wokesharks.linkClickPlotly', [])
 
 })
 
+// .controller('linkClickLineController', function ($scope, Links) {
+
+//   var allUrls = [];
+//   var allCounts = [];
+
+//   $scope.refresh = function() {
+//     Links.getAllLinks()
+//     .then(function(response) {
+//       response.data.forEach(function(item) {
+//         allUrls.push(item.url);
+//         allCounts.push(item.count);
+//       })
+//       allCounts.sort();
+//       $scope.data = {x: allUrls, y: allCounts, type: 'line'};
+//       $scope.data = [$scope.data];
+//     });
+//   }
+
+//   $scope.refresh();
+// })
 
 .directive('linePlot', function () {
   // Create a link function
   function linkFunc(scope, element, attrs) {
       scope.$watch('data', function (plots) {
-          var layout = {
-            width: 600,
-            height: 300,
-            margin: { 't': 40, 'b':20, 'l':40, 'r':0 },
-          };
+        var layout = {
+          width: 600,
+          height: 300,
+          margin: { 't': 40, 'b':20, 'l':40, 'r':0 },
+        };
 
-
-          Plotly.newPlot(element[0], plots, layout);
-      }, true);
+      Plotly.newPlot(element[0], plots, layout);
+    }, true);
   }
 
   // Return this function for linking ...
   return {
       link: linkFunc
   };
-});
+
+})
+
+.directive('overallPlot', function () {
+  // Create a link function
+  function linkFunc(scope, element, attrs) {
+      scope.$watch('data', function (plots) {
+        var layout = {
+          width: 400,
+          height: 200,
+          margin: { 't': 20, 'b':20, 'l':20, 'r':0 },
+        };
+
+      Plotly.newPlot(element[0], plots, layout);
+    }, true);
+  }
+
+  // Return this function for linking ...
+  return {
+      link: linkFunc
+  };
+
+})
 
 
 

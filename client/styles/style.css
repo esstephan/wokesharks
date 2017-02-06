@@ -43,6 +43,11 @@ abbr {
   border-bottom: none;
   }
 
+.overall {
+  float:left;
+  width:33%;
+}
+
 .top-banner {
     color : #ccffff;
     background-color: blue;

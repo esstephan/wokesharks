@@ -1,4 +1,4 @@
-<div id='pageview-container' ng-controller='pageViewController'>
+<div ng-controller='pageViewController'>
 
 <div class = "row">
   <div class="col-md-3"></div>
@@ -20,11 +20,15 @@
   <!--Center featured chart -->
   <div class="col-md-6">
     <h4 align='center'>Page Views</h4>
-    <div id='pageview-container' ng-controller='pageViewVisualsController'>
+    <div ng-controller='pageViewVisualsController'>
       <line-plot id='pageView' width=300, height=200>
     </div><br><br>
     <h4 align='center'>Percentage of Total Views</h4>
-    <div id='pageview-container' ng-controller='pageViewPieController'>
+    <div ng-controller='pageViewPieController'>
+      <line-plot width=300, height=200>
+    </div><br>
+    <h4 align='center'>Total Page Views Per Day</h4>
+    <div ng-controller='pageViewDayController'>
       <line-plot width=300, height=200>
     </div><br>
   </div>

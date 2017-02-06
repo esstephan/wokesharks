@@ -1,0 +1,21 @@
+<!--Center featured chart -->
+  <div ng-controller='linkClickController'>
+    <h4 align='center'>Link Clicks</h4>
+    <div id='pageview-container' ng-controller='linkClickVisualsController'>
+        <line-plot width=300, height=200>
+      </div><br><br>
+    <h4 align='center'>Percentage of Total Clicks</h4>
+    <div id='pageview-container' ng-controller='linkClickPieController'>
+      <line-plot width=300, height=200>
+    </div><br>
+    <div>
+      <h4 align='center'>Page Views</h4>
+      <div id='pageview-container' ng-controller='pageViewVisualsController'>
+        <line-plot id='pageView' width=300, height=200>
+      </div><br><br>
+      <h4 align='center'>Percentage of Total Views</h4>
+      <div id='pageview-container' ng-controller='pageViewPieController'>
+        <line-plot width=300, height=200>
+      </div><br>
+    </div>
+  </div>

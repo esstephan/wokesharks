@@ -5,7 +5,7 @@ Team
 
 Product Owner: Tony Hyde
 Scrum Master: Erica Stephan
-Development Team Members: Ian George, Jeff Bentley
+Development Team Members: Ian George, Jeff Bentler
 
 Table of Contents
 

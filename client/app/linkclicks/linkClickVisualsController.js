@@ -12,7 +12,7 @@ angular.module('wokesharks.linkClickPlotly', [])
           allUrls.push(item.url); // Push the url and the count properties onto their relevant arrays.
           allCounts.push(item.count);
         })
-        $scope.data = {x: allUrls, y: allCounts, type: 'bar'}; // Set our bar graph parameters within and object...
+        $scope.data = {x: allUrls, y: allCounts, type: 'bar'}; // Set our bar graph parameters within an object...
         $scope.data = [$scope.data]; // and store it-as Plotly requires-within an array.
       });
   };
@@ -49,34 +49,34 @@ angular.module('wokesharks.linkClickPlotly', [])
 
 })
 
-.controller("linkClickDayController", function ($scope, Links) {
+.controller("linkClickDayController", function ($scope, Links) { // our day graph controller
 
-  var allUrls = [];
+  var allUrls = []; // initialization block
   var allDates = [];
   var everyDay = [];
   var dates = {};
 
-  $scope.refresh = function() {
-    Links.getAllLinks()
+  $scope.refresh = function() { // When refresh is called:
+    Links.getAllLinks() // Get all the links.
       .then(function(response) {
-        response.data.forEach(function(item) {
-          item.date.forEach(function(element) {
-            allDates.push(element);
+        response.data.forEach(function(item) { // For each element within the data...
+          item.date.forEach(function(element) { // For each date within the element...
+            allDates.push(element); // Push date onto allDates
           })
         })
-        allDates.forEach(function(day) {
-          var day = day.slice(4,10);
-          if(dates[day]) {
-            dates[day] = dates[day] + 1;
-          } else {
-            dates[day] = 1;
+        allDates.forEach(function(day) { // For each day within allDates...
+          var day = day.slice(4,10); // Slice off the relevant substring: for example, "Feb 06"
+          if(dates[day]) { // If we already have an entry for this day within dates...
+            dates[day] = dates[day] + 1; // Increment the count for this date.
+          } else { // If not, instantiate it to one.
+            dates[day] = 1; 
           }
         })
-        var days = Object.keys(dates);
+        var days = Object.keys(dates); 
         for (var key in dates) {
-          everyDay.push(dates[key]);
+          everyDay.push(dates[key]); // Push the date "counts" into everyDay for plotting.
         }
-        $scope.data = {x: days, y: everyDay, type: 'scatter'};
+        $scope.data = {x: days, y: everyDay, type: 'scatter'}; // Our scatter plot.
         $scope.data = [$scope.data];
       });
   };
@@ -147,6 +147,3 @@ angular.module('wokesharks.linkClickPlotly', [])
   };
 
 })
-
-
-

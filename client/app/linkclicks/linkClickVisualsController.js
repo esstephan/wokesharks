@@ -1,44 +1,44 @@
 angular.module('wokesharks.linkClickPlotly', [])
 
-.controller('linkClickVisualsController', function ($scope, Links) {
+.controller('linkClickVisualsController', function ($scope, Links) { // our bar graph controller
 
-  var allUrls = [];
+  var allUrls = []; // initialization block
   var allCounts = [];
 
-  $scope.refresh = function() {
-    Links.getAllLinks()
+  $scope.refresh = function() { // When refresh is called:
+    Links.getAllLinks() // Get all the links
       .then(function(response) {
-        response.data.forEach(function(item) {
-          allUrls.push(item.url);
+        response.data.forEach(function(item) { // For all items in response.data...
+          allUrls.push(item.url); // Push the url and the count properties onto their relevant arrays.
           allCounts.push(item.count);
         })
-        $scope.data = {x: allUrls, y: allCounts, type: 'bar'};
-        $scope.data = [$scope.data];
+        $scope.data = {x: allUrls, y: allCounts, type: 'bar'}; // Set our bar graph parameters within and object...
+        $scope.data = [$scope.data]; // and store it-as Plotly requires-within an array.
       });
   };
 
-  $scope.refresh();
+  $scope.refresh(); 
 })
 
-.controller("linkClickPieController", function ($scope, Links) {
+.controller("linkClickPieController", function ($scope, Links) { // our pie graph controller
 
-  var allUrls = [];
+  var allUrls = []; // initialization block
   var allCounts = [];
   var percentage = [];
   var totalCount = 0;
 
-  $scope.refresh = function() {
-    Links.getAllLinks()
+  $scope.refresh = function() { // When refresh is called:
+    Links.getAllLinks() // Get all the links
       .then(function(response) {
-        response.data.forEach(function(item) {
-          totalCount+=item.count;
-          allUrls.push(item.url);
+        response.data.forEach(function(item) { // For all the items in response.data...
+          totalCount+=item.count; // Increment the total amount of clicks by the amount of times the current url has been clicked
+          allUrls.push(item.url); // Push the url and count properties into their relevant arrays.
           allCounts.push(item.count);
         })
-        allCounts.forEach(function(count) {
-          percentage.push(count/totalCount*100)
+        allCounts.forEach(function(count) { // For each link...
+          percentage.push(count/totalCount*100) // Get the percentage of how many times this link has been clicked over the total number of aggregate clicks.
         })
-        $scope.data = {values: percentage, labels: allUrls, type: 'pie'};
+        $scope.data = {values: percentage, labels: allUrls, type: 'pie'}; // Set our pie graph
         $scope.data = [$scope.data];
       });
   };

@@ -1,35 +1,34 @@
 angular.module("wokeshark.linkClick", [])
-.controller("linkClickController", function($scope, Links) {
+.controller("linkClickController", function($scope, Links) { // Controller: takes in Links object
 
-$scope.linkcounts = {};
-$scope.showAll = true;
+$scope.linkcounts = {}; // Object storing urls and their number of "hits"
+$scope.showAll = true; 
 $scope.hideAll = false;
 
-$scope.setShowAll = function(value) {
+$scope.setShowAll = function(value) { // Boolean function: if the controller div is hidden and the relevant submit button is hit, we show it, and vice versa.
     $scope.showAll = value;
     $scope.hideAll = !value;
 }
 
 $scope.showDates = true;
 $scope.hideDates = false;
-$scope.setHideDates = function(value) {
-    $scope.hideDates = value;
+$scope.setHideDates = function(value) { // Boolean function: same as above, but with the dates.
     $scope.showDates = !value;
 }
 
-var allCounts = 0;
+var allCounts = 0; // the total amount of counts
 //make request for all links at once
   $scope.getAllLinks = function () {
-    Links.getAllLinks()
+    Links.getAllLinks() // invoke getAllLinks, from our factory
     .then (function (response, err) {
       if (err) {
-        console.log('error', err)
+        console.log('error', err) // error handling
       } else {
-        $scope.allData = response.data;
-        response.data.forEach(function(item) {
-          allCounts+=item.count;
-          $scope.clicks = allCounts;
-          $scope.getLink(item.url);
+        $scope.allData = response.data; // set allData to the input data
+        response.data.forEach(function(item) { // for each element in data...
+          allCounts+=item.count; // increment allCounts by the amount of items in the element...
+          $scope.clicks = allCounts; // put allCounts  under our scope, so we can access it from the HTML.
+          $scope.getLink(item.url); // invoke getLink from our factory for the element's url.
         })
       }
     });
@@ -37,23 +36,21 @@ var allCounts = 0;
 
 
 
-$scope.getAllLinks();
+$scope.getAllLinks(); // Invoke function.
 
 //call getLink on each one of the urls in allLinks
 //in our mockup, these will be /buyify (homepage), /products, /addToCart, or /checkout
-  $scope.getLink = function(url) {
-    Links.getLink(url)
+  $scope.getLink = function(url) { // take in url...
+    Links.getLink(url) // get the link to that url...
     .then(function (response, err) {
-      if (err) {
+      if (err) { // error handling
         console.log('error', err)
       } else {
-        //console.log("response", response.data)
-        $scope.linkcounts[url] = {};
+        $scope.linkcounts[url] = {}; 
         $scope.linkcounts[url].count = 0;
-        $scope.linkcounts[url].count = response.data.count;
-        //console.log("count of link clicks retrieved from server for ", url, " is ", $scope.linkcounts[url].count);
+        $scope.linkcounts[url].count = response.data.count; // get the number of times the url was clicked
         $scope.linkcounts[url].url = url;
-        $scope.linkcounts[url].dates = response.data.date;
+        $scope.linkcounts[url].dates = response.data.date; // get the current date
 
       }
     })

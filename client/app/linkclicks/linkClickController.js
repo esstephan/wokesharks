@@ -1,88 +1,152 @@
-angular.module("wokeshark.linkClick", [])
-.controller("linkClickController", function($scope, Links) { // Controller: takes in Links object
+angular.module('wokesharks.linkClickPlotly', [])
 
-$scope.linkcounts = {}; // Object storing urls and their number of "hits"
-$scope.showAll = true; 
-$scope.hideAll = false;
+.controller('linkClickVisualsController', function ($scope, Links) { // our bar graph controller
 
-$scope.setShowAll = function(value) { // Boolean function: if the controller div is hidden and the relevant submit button is hit, we show it, and vice versa.
-    $scope.showAll = value;
-    $scope.hideAll = !value;
-}
+  var allUrls = []; // initialization block
+  var allCounts = [];
 
-$scope.showDates = true;
-$scope.hideDates = false;
-$scope.setHideDates = function(value) { // Boolean function: same as above, but with the dates.
-    $scope.showDates = !value;
-}
-
-var allCounts = 0; // the total amount of counts
-//make request for all links at once
-  $scope.getAllLinks = function () {
-    Links.getAllLinks() // invoke getAllLinks, from our factory
-    .then (function (response, err) {
-      if (err) {
-        console.log('error', err) // error handling
-      } else {
-        $scope.allData = response.data; // set allData to the input data
-        response.data.forEach(function(item) { // for each element in data...
-          allCounts+=item.count; // increment allCounts by the amount of items in the element...
-          $scope.clicks = allCounts; // put allCounts  under our scope, so we can access it from the HTML.
-          $scope.getLink(item.url); // invoke getLink from our factory for the element's url.
+  $scope.refresh = function() { // When refresh is called:
+    Links.getAllLinks() // Get all the links
+      .then(function(response) {
+        response.data.forEach(function(item) { // For all items in response.data...
+          allUrls.push(item.url); // Push the url and the count properties onto their relevant arrays.
+          allCounts.push(item.count);
         })
-      }
-    });
+        $scope.data = {x: allUrls, y: allCounts, type: 'bar'}; // Set our bar graph parameters within an object...
+        $scope.data = [$scope.data]; // and store it-as Plotly requires-within an array.
+      });
+  };
+
+  $scope.refresh(); 
+})
+
+.controller("linkClickPieController", function ($scope, Links) { // our pie graph controller
+
+  var allUrls = []; // initialization block
+  var allCounts = [];
+  var percentage = [];
+  var totalCount = 0;
+
+  $scope.refresh = function() { // When refresh is called:
+    Links.getAllLinks() // Get all the links
+      .then(function(response) {
+        response.data.forEach(function(item) { // For all the items in response.data...
+          totalCount+=item.count; // Increment the total amount of clicks by the amount of times the current url has been clicked
+          allUrls.push(item.url); // Push the url and count properties into their relevant arrays.
+          allCounts.push(item.count);
+        })
+        allCounts.forEach(function(count) { // For each link...
+          percentage.push(count/totalCount*100) // Get the percentage of how many times this link has been clicked over the total number of aggregate clicks.
+        })
+        $scope.data = {values: percentage, labels: allUrls, type: 'pie'}; // Set our pie graph
+        $scope.data = [$scope.data];
+      });
   };
 
 
 
-$scope.getAllLinks(); // Invoke function.
+  $scope.refresh();
 
-//call getLink on each one of the urls in allLinks
-//in our mockup, these will be /buyify (homepage), /products, /addToCart, or /checkout
-  $scope.getLink = function(url) { // take in url...
-    Links.getLink(url) // get the link to that url...
-    .then(function (response, err) {
-      if (err) { // error handling
-        console.log('error', err)
-      } else {
-        $scope.linkcounts[url] = {}; 
-        $scope.linkcounts[url].count = 0;
-        $scope.linkcounts[url].count = response.data.count; // get the number of times the url was clicked
-        $scope.linkcounts[url].url = url;
-        $scope.linkcounts[url].dates = response.data.date; // get the current date
+})
 
-      }
-    })
+.controller("linkClickDayController", function ($scope, Links) { // our day graph controller
 
+  var allUrls = []; // initialization block
+  var allDates = [];
+  var everyDay = [];
+  var dates = {};
+
+  $scope.refresh = function() { // When refresh is called:
+    Links.getAllLinks() // Get all the links.
+      .then(function(response) {
+        response.data.forEach(function(item) { // For each element within the data...
+          item.date.forEach(function(element) { // For each date within the element...
+            allDates.push(element); // Push date onto allDates
+          })
+        })
+        allDates.forEach(function(day) { // For each day within allDates...
+          var day = day.slice(4,10); // Slice off the relevant substring: for example, "Feb 06"
+          if(dates[day]) { // If we already have an entry for this day within dates...
+            dates[day] = dates[day] + 1; // Increment the count for this date.
+          } else { // If not, instantiate it to one.
+            dates[day] = 1; 
+          }
+        })
+        var days = Object.keys(dates); 
+        for (var key in dates) {
+          everyDay.push(dates[key]); // Push the date "counts" into everyDay for plotting.
+        }
+        $scope.data = {x: days, y: everyDay, type: 'scatter'}; // Our scatter plot.
+        $scope.data = [$scope.data];
+      });
   };
 
+  $scope.refresh();
 
+})
 
-//additional (maybe not needed?) functionality: send new link
-  // $scope.sendLink = function(link){
-  //   console.log(link);
-  //   var newLink =
-  //   {url: link.url}
-  //   date: Date.now()
-  // }
-  //   http.send('/linkClick', link)
-  //   .then(function (data) {
-  //     console.log("link sent")
-  //   });
-  // })
+// .controller('linkClickLineController', function ($scope, Links) {
 
-  // $scope.getLink("Buy");
-  // $scope.getLink("Buyify");
-  // $scope.getLink("shopping_cart");
-  // $scope.getLink("Add To Cart");
-  // $scope.getLink("Products");
+//   var allUrls = [];
+//   var allCounts = [];
 
-  // $scope.getLink("penguins");
-  // $scope.getLink("addToCart");
-  // $scope.getLink("checkout");
+//   $scope.refresh = function() {
+//     Links.getAllLinks()
+//     .then(function(response) {
+//       response.data.forEach(function(item) {
+//         allUrls.push(item.url);
+//         allCounts.push(item.count);
+//       })
+//       allCounts.sort();
+//       $scope.data = {x: allUrls, y: allCounts, type: 'line'};
+//       $scope.data = [$scope.data];
+//     });
+//   }
 
-});
+//   $scope.refresh();
+// })
+
+.directive('linePlot', function () {
+  // Create a link function
+  function linkFunc(scope, element, attrs) {
+      scope.$watch('data', function (plots) {
+        var layout = {
+          width: 600,
+          height: 300,
+          margin: { 't': 40, 'b':20, 'l':40, 'r':0 },
+        };
+
+      Plotly.newPlot(element[0], plots, layout);
+    }, true);
+  }
+
+  // Return this function for linking ...
+  return {
+      link: linkFunc
+  };
+
+})
+
+.directive('overallPlot', function () {
+  // Create a link function
+  function linkFunc(scope, element, attrs) {
+      scope.$watch('data', function (plots) {
+        var layout = {
+          width: 400,
+          height: 200,
+          margin: { 't': 40, 'b':20, 'l':40, 'r':0 },
+        };
+
+      Plotly.newPlot(element[0], plots, layout);
+    }, true);
+  }
+
+  // Return this function for linking ...
+  return {
+      link: linkFunc
+  };
+
+})
 
 
 
